@@ -69,5 +69,8 @@ export function trackLead(payload: {
         transaction_id: payload.event_id,
       });
     }
+    window.gtag("event", "generate_lead", {
+      event_id: payload.event_id,
+    });
   }
 }
