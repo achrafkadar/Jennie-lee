@@ -149,3 +149,55 @@ var WEBHOOK_URL = "";
     });
   }
 })();
+
+/** GSAP (CDN) — entrées hero, désactivé si prefers-reduced-motion */
+(function initGsapHero() {
+  if (typeof gsap === "undefined") return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var hero = document.querySelector("#hero .hero-copy");
+  var aside = document.querySelector("#hero .hero-aside");
+  if (hero && hero.children.length) {
+    gsap.from(hero.children, {
+      autoAlpha: 0,
+      y: 14,
+      duration: 0.55,
+      ease: "power2.out",
+      stagger: 0.06,
+    });
+  }
+  if (aside) {
+    gsap.from(aside, {
+      autoAlpha: 0,
+      y: 20,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.12,
+    });
+  }
+})();
+/** GSAP (CDN) — entrées hero, désactivé si prefers-reduced-motion */
+(function initGsapHero() {
+  if (typeof gsap === "undefined") return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var hero = document.querySelector("#hero .hero-copy");
+  var aside = document.querySelector("#hero .hero-aside");
+  if (hero && hero.children.length) {
+    gsap.from(hero.children, {
+      autoAlpha: 0,
+      y: 14,
+      duration: 0.55,
+      ease: "power2.out",
+      stagger: 0.06,
+    });
+  }
+  if (aside) {
+    gsap.from(aside, {
+      autoAlpha: 0,
+      y: 20,
+      duration: 0.6,
+      ease: "power2.out",
+      delay: 0.12,
+    });
+  }
+})();
+

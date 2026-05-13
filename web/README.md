@@ -2,6 +2,20 @@
 
 Application **Next.js 14 (App Router)**, **TailwindCSS**, **TypeScript**, formulaire d’estimation avec tracking (GTM, Meta Pixel, CAPI, GA4).
 
+## Bibliothèques d’animation (dossier `web/`)
+
+| Paquet | Usage |
+|--------|--------|
+| **framer-motion** | Déjà présent — animations dans les composants React client (`"use client"`). |
+| **gsap** | Installé — animations impératives (timelines, ScrollTrigger si tu l’ajoutes). |
+| **@gsap/react** | Hook **`useGSAP`** pour intégrer GSAP dans React avec cleanup correct au démontage. |
+
+Les **skills GSAP** dans Cursor (`gsap-core`, `gsap-scrolltrigger`, `gsap-react`, etc.) s’appliquent quand tu écris ou demandes du code d’animation : l’agent les lit automatiquement si la tâche correspond.
+
+### 21st.dev (Magic MCP dans Cursor)
+
+Le serveur **@21st-dev/magic** sert à proposer ou raffiner des **composants React / UI**. Pour l’activer : **Cursor → Settings → MCP** et renseigner la clé créée sur [21st.dev Magic Console](https://21st.dev/magic/console) (souvent dans `~/.cursor/mcp.json` sous la forme documentée par 21st). Sans clé, les outils Magic ne peuvent pas appeler l’API.
+
 ## Prérequis
 
 - Node.js 20+
