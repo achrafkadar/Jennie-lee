@@ -3,35 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redirection — Flash Immobilier</title>
-  <script>
-    /* Une seule URL à maintenir : votre déploiement Vercel (dossier web/ du dépôt). */
-    var URL_NOUVELLE_PAGE = "https://jennie-lee.vercel.app";
-  </script>
+  <title>Mise en ligne — Landing Flash Immobilier</title>
+  <style>
+    :root {
+      --primary: #0a2540;
+      --muted: #5a6b7e;
+      --border: #e5e9f0;
+      --bg: #f7f9fc;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      color: var(--primary);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 36rem;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 1px 3px rgba(10, 37, 64, 0.06);
+    }
+    h1 {
+      font-size: 1.25rem;
+      margin: 0 0 0.75rem;
+    }
+    ol {
+      padding-left: 1.25rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    code {
+      background: var(--bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .btn {
+      display: inline-block;
+      margin: 0.35rem 0.5rem 0.35rem 0;
+      padding: 0.65rem 1rem;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .btn:hover {
+      opacity: 0.92;
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 1.25rem;
+    }
+    .warn {
+      background: #fff8e6;
+      border: 1px solid #e6d9a8;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-<body
-  style="font-family: system-ui, sans-serif; max-width: 28rem; margin: 3rem auto; padding: 1.25rem; line-height: 1.5; color: #0a2540"
->
-  <p><strong>Redirection…</strong></p>
-  <p>
-    L’ancienne page à cette adresse (GitHub Pages) a été remplacée par la nouvelle
-    landing Next.js sur <strong>Vercel</strong>.
-  </p>
-  <p>
-    <a id="cible" href="#" style="color: #0a2540; font-weight: 600">Ouvrir la nouvelle page</a>
-  </p>
-  <p style="font-size: 0.875rem; color: #5a6b7e">
-    Si le lien ne fonctionne pas encore, déployez le dossier <code>web</code> sur Vercel
-    (paramètre <strong>Root Directory</strong> = <code>web</code>), puis mettez la bonne
-    URL dans ce fichier (variable <code>URL_NOUVELLE_PAGE</code> en haut).
-  </p>
-  <script>
-    (function () {
-      var u = typeof URL_NOUVELLE_PAGE !== "undefined" ? URL_NOUVELLE_PAGE : "https://jennie-lee.vercel.app";
-      var a = document.getElementById("cible");
-      if (a) a.href = u;
-      location.replace(u);
-    })();
-  </script>
+<body>
+  <main>
+    <h1>La nouvelle landing n’est pas encore en ligne sur Vercel</h1>
+    <p>
+      L’adresse <code>jennie-lee.vercel.app</code> n’existe pas tant qu’aucun projet
+      Vercel n’a été créé et déployé. D’où l’erreur <strong>404 NOT_FOUND</strong>.
+    </p>
+    <div class="warn">
+      <strong>À faire :</strong> déployer le dossier <code>web</code> (Next.js) sur Vercel.
+      Ensuite, remplacez l’URL dans ce fichier par votre vraie URL (recherche
+      <code>VERCEL_APP_URL</code> ci-dessous).
+    </div>
+    <ol>
+      <li>Ouvrir Vercel et importer le dépôt GitHub <strong>Jennie-lee</strong>.</li>
+      <li>
+        Dans <strong>Project Settings → General → Root Directory</strong>, indiquer
+        <code>web</code> (obligatoire : l’app Next n’est pas à la racine du repo).
+      </li>
+      <li>
+        Ajouter les variables d’environnement (voir <code>web/.env.example</code>),
+        puis <strong>Redeploy</strong>.
+      </li>
+      <li>
+        Copier l’URL du site (ex. <code>https://jennie-lee-xxxxx.vercel.app</code>) et la
+        coller à la place de <code>VERCEL_APP_URL</code> dans ce fichier pour activer une
+        redirection depuis GitHub Pages (optionnel).
+      </li>
+    </ol>
+    <p>
+      <a class="btn" href="https://vercel.com/new">Créer un projet sur Vercel</a>
+      <a class="btn" href="https://github.com/achrafkadar/Jennie-lee" style="background: #374151"
+        >Ouvrir le dépôt GitHub</a
+      >
+    </p>
+    <p class="muted">
+      Fichier : <code>index.html</code> à la racine du dépôt (GitHub Pages).  
+      <!-- Redirection optionnelle : décommentez les 2 lignes suivantes et mettez votre URL Vercel réelle. -->
+      <!-- <meta http-equiv="refresh" content="0;url=VERCEL_APP_URL" /> -->
+      <!-- <script>location.replace("VERCEL_APP_URL")</script> -->
+    </p>
+  </main>
 </body>
 </html>
