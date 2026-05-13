@@ -15,19 +15,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <!-- Photo plein écran : remplacez assets/hero-bg.jpg par votre image (large JPG/WebP recommandé). -->
+  <link rel="stylesheet" href="styles.css?v=6" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header site-header--lux">
     <div class="header-inner">
       <div>
         <img class="logo-img" src="assets/logo-flash.svg" width="180" height="44" alt="Flash Immobilier" />
       </div>
-      <a class="header-phone" href="tel:+18733535386" aria-label="Appeler le 873-353-5386">
+      <a class="header-phone header-phone--lux" href="tel:+18733535386" aria-label="Appeler le 873-353-5386">
+        <span class="header-phone__ring" aria-hidden="true"></span>
         <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
@@ -37,153 +40,167 @@
   </header>
 
   <main>
-    <section class="section section-border" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="badge-accent">Estimation gratuite — Réponse en 24h</p>
-          <h1>Combien vaut VRAIMENT votre maison à Gatineau en 2026?</h1>
-          <p class="lead">
-            Recevez une analyse personnalisée basée sur les ventes réelles des 90 derniers jours dans votre secteur.
-            Préparée par Jennie Lee Desbiens, courtière immobilière à Flash Immobilier.
-          </p>
-          <ul class="check-list">
-            <li>
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>100% gratuit, sans engagement</span>
-            </li>
-            <li>
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>Rapport personnalisé en 24h</span>
-            </li>
-            <li>
-              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>Confidentialité totale garantie</span>
-            </li>
-          </ul>
-          <div class="show-mobile-only">
-            <button type="button" class="btn btn-primary btn-lg" data-scroll-form>Obtenir mon estimation</button>
-          </div>
-        </div>
+    <!-- Section 1 : titre, sous-titre, CTA — fond photo -->
+    <section
+      class="hero-landing"
+      id="hero"
+      style="--hero-bg: url('assets/hero-bg.jpg')"
+    >
+      <div class="hero-landing__veil" aria-hidden="true"></div>
+      <div class="hero-landing__grain" aria-hidden="true"></div>
+      <div class="container hero-landing__inner">
+        <h1 class="hero-landing__title font-display">Combien vaut VRAIMENT votre maison à Gatineau en 2026?</h1>
+        <p class="hero-landing__subtitle">
+          Recevez une analyse personnalisée basée sur les ventes réelles des 90 derniers jours dans votre secteur — préparée par Jennie Lee Desbiens, Flash Immobilier.
+        </p>
+        <button type="button" class="btn-hero-lux btn-magnetic" data-scroll-form>
+          <span class="btn-hero-lux__shine" aria-hidden="true"></span>
+          <span class="btn-hero-lux__label">Recevoir mon estimation gratuitement</span>
+          <svg class="btn-hero-lux__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 4v12M6 11l6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+    </section>
 
-        <div class="hero-aside">
-          <div class="hero-photo-wrap">
-            <img src="assets/jennie-lee-hero.jpg" alt="Jennie Lee Desbiens, courtière immobilière" width="160" height="214" />
-          </div>
+    <!-- Section 2 : formulaire uniquement -->
+    <section class="section-form-lux" id="estimation-form">
+      <div class="section-form-lux__bg" aria-hidden="true"></div>
+      <div class="container section-form-lux__wrap">
+        <div class="form-lux-card" data-reveal>
+          <div class="form-lux-card__accent" aria-hidden="true"></div>
+          <header class="form-lux-card__head">
+            <span class="form-lux-kicker">Estimation gratuite · Réponse en 24h</span>
+            <h2 class="form-lux-title font-display">Votre demande d’estimation</h2>
+            <p class="form-lux-lead">Quelques informations — nous préparons votre rapport personnalisé sans engagement.</p>
+          </header>
+          <form id="lead-form" class="form-lux" novalidate>
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <input type="hidden" name="utm_content" value="" />
+            <input type="hidden" name="utm_term" value="" />
+            <input type="hidden" name="referrer" value="" />
+            <input type="hidden" name="page_url" value="" />
+            <input type="hidden" name="gclid" value="" />
+            <input type="hidden" name="fbclid" value="" />
 
-          <div class="card" id="estimation-form">
-            <h2 class="card-title">Demandez votre estimation gratuite</h2>
-            <p class="card-sub">Réponse personnalisée en 24h</p>
-            <form id="lead-form" novalidate>
-              <input type="hidden" name="utm_source" value="" />
-              <input type="hidden" name="utm_medium" value="" />
-              <input type="hidden" name="utm_campaign" value="" />
-              <input type="hidden" name="utm_content" value="" />
-              <input type="hidden" name="utm_term" value="" />
-              <input type="hidden" name="referrer" value="" />
-              <input type="hidden" name="page_url" value="" />
-              <input type="hidden" name="gclid" value="" />
-              <input type="hidden" name="fbclid" value="" />
-
-              <div class="form-group">
-                <label class="form-label" for="prenom">Prénom *</label>
-                <input class="form-input" id="prenom" name="prenom" type="text" autocomplete="given-name" required />
+            <div class="form-lux-grid">
+              <div class="form-lux-field">
+                <label class="form-lux-label" for="prenom">Prénom *</label>
+                <input class="form-lux-input" id="prenom" name="prenom" type="text" autocomplete="given-name" placeholder=" " required />
                 <p class="form-error" data-error="prenom"></p>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="nom">Nom *</label>
-                <input class="form-input" id="nom" name="nom" type="text" autocomplete="family-name" required />
+              <div class="form-lux-field">
+                <label class="form-lux-label" for="nom">Nom *</label>
+                <input class="form-lux-input" id="nom" name="nom" type="text" autocomplete="family-name" placeholder=" " required />
                 <p class="form-error" data-error="nom"></p>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="telephone">Téléphone *</label>
-                <input class="form-input" id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" required />
-                <p class="form-error" data-error="telephone"></p>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">Courriel *</label>
-                <input class="form-input" id="email" name="email" type="email" autocomplete="email" required />
-                <p class="form-error" data-error="email"></p>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="adresse">Adresse de la propriété *</label>
-                <input class="form-input" id="adresse" name="adresse" type="text" autocomplete="street-address" required />
-                <p class="form-error" data-error="adresse"></p>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="typePropriete">Type de propriété *</label>
-                <select class="form-select" id="typePropriete" name="typePropriete" required>
-                  <option value="" disabled selected>Choisir…</option>
-                  <option value="maison_unifamiliale">Maison unifamiliale</option>
-                  <option value="condo">Condo</option>
-                  <option value="plex">Plex</option>
-                  <option value="terrain">Terrain</option>
-                  <option value="autre">Autre</option>
-                </select>
+            </div>
+            <div class="form-lux-field">
+              <label class="form-lux-label" for="telephone">Téléphone *</label>
+              <input class="form-lux-input" id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder=" " required />
+              <p class="form-error" data-error="telephone"></p>
+            </div>
+            <div class="form-lux-field">
+              <label class="form-lux-label" for="email">Courriel *</label>
+              <input class="form-lux-input" id="email" name="email" type="email" autocomplete="email" placeholder=" " required />
+              <p class="form-error" data-error="email"></p>
+            </div>
+            <div class="form-lux-field">
+              <label class="form-lux-label" for="adresse">Adresse de la propriété *</label>
+              <input class="form-lux-input" id="adresse" name="adresse" type="text" autocomplete="street-address" placeholder=" " required />
+              <p class="form-error" data-error="adresse"></p>
+            </div>
+            <div class="form-lux-grid">
+              <div class="form-lux-field">
+                <label class="form-lux-label" for="typePropriete">Type de propriété *</label>
+                <div class="form-lux-select-wrap">
+                  <select class="form-lux-select" id="typePropriete" name="typePropriete" required>
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="maison_unifamiliale">Maison unifamiliale</option>
+                    <option value="condo">Condo</option>
+                    <option value="plex">Plex</option>
+                    <option value="terrain">Terrain</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
                 <p class="form-error" data-error="typePropriete"></p>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="quandVendre">Quand envisagez-vous de vendre? *</label>
-                <select class="form-select" id="quandVendre" name="quandVendre" required>
-                  <option value="" disabled selected>Choisir…</option>
-                  <option value="0_3_mois">Dans les 3 prochains mois</option>
-                  <option value="3_6_mois">3 à 6 mois</option>
-                  <option value="6_12_mois">6 à 12 mois</option>
-                  <option value="plus_12_mois">Plus de 12 mois</option>
-                  <option value="curieux">Juste curieux</option>
-                </select>
+              <div class="form-lux-field">
+                <label class="form-lux-label" for="quandVendre">Quand vendre? *</label>
+                <div class="form-lux-select-wrap">
+                  <select class="form-lux-select" id="quandVendre" name="quandVendre" required>
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="0_3_mois">Dans les 3 prochains mois</option>
+                    <option value="3_6_mois">3 à 6 mois</option>
+                    <option value="6_12_mois">6 à 12 mois</option>
+                    <option value="plus_12_mois">Plus de 12 mois</option>
+                    <option value="curieux">Juste curieux</option>
+                  </select>
+                </div>
                 <p class="form-error" data-error="quandVendre"></p>
               </div>
+            </div>
 
-              <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 0.5rem">Recevoir mon estimation gratuite</button>
-              <p class="form-hint">
-                En soumettant ce formulaire, vous acceptez d’être contacté par Jennie Lee. Vos informations sont confidentielles et ne seront jamais partagées.
-              </p>
-            </form>
-          </div>
+            <button type="submit" class="btn-lux-submit btn-magnetic">
+              <span class="btn-lux-submit__glow" aria-hidden="true"></span>
+              <span class="btn-lux-submit__text">Recevoir mon estimation gratuite</span>
+            </button>
+            <p class="form-lux-hint">
+              En soumettant ce formulaire, vous acceptez d’être contacté par Jennie Lee. Vos informations restent strictement confidentielles.
+            </p>
+          </form>
         </div>
       </div>
     </section>
 
-    <section class="section bg-alt section-border">
-      <div class="container proof-grid">
-        <div class="proof-item">
-          <span class="proof-emoji" aria-hidden="true">🏆</span>
+    <section class="section section-border lux-section bg-alt">
+      <div class="container proof-grid" data-stagger>
+        <div class="proof-item lux-proof">
+          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">🏆</span></span>
           <p>Plus de 100 transactions complétées</p>
         </div>
-        <div class="proof-item">
-          <span class="proof-emoji" aria-hidden="true">📜</span>
+        <div class="proof-item lux-proof">
+          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">📜</span></span>
           <p>Membre OACIQ</p>
         </div>
-        <div class="proof-item">
-          <span class="proof-emoji" aria-hidden="true">🏢</span>
+        <div class="proof-item lux-proof">
+          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">🏢</span></span>
           <p>Top 41 / 623 courtiers en Outaouais (2023)</p>
         </div>
-        <div class="proof-item">
-          <span class="proof-emoji" aria-hidden="true">📅</span>
+        <div class="proof-item lux-proof">
+          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">📅</span></span>
           <p>Disponible 7 jours sur 7</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section lux-section">
       <div class="container">
-        <div class="text-center" style="max-width: 36rem; margin: 0 auto">
-          <h2>Comment obtenir votre estimation gratuite</h2>
-          <p class="lead" style="margin-top: 0.75rem">3 étapes simples, aucune pression</p>
+        <div class="text-center lux-heading-block" data-reveal>
+          <h2 class="font-display lux-h2">Comment obtenir votre estimation gratuite</h2>
+          <p class="lead lux-sub">3 étapes simples, aucune pression</p>
         </div>
-        <div class="steps-grid" style="margin-top: 2.5rem">
-          <article class="step-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+        <div class="steps-grid lux-steps" data-stagger>
+          <article class="step-card lux-card">
+            <div class="lux-card__icon" data-icon-float>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
+            </div>
             <h3>Remplissez le formulaire</h3>
             <p>30 secondes. Quelques informations sur votre propriété et vos intentions.</p>
           </article>
-          <article class="step-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          <article class="step-card lux-card">
+            <div class="lux-card__icon" data-icon-float>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+            </div>
             <h3>Jennie Lee analyse votre secteur</h3>
             <p>Elle prépare un rapport basé sur les 3 dernières ventes comparables dans votre rue ou votre quartier.</p>
           </article>
-          <article class="step-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <article class="step-card lux-card">
+            <div class="lux-card__icon" data-icon-float>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
             <h3>Recevez votre rapport en 24h</h3>
             <p>Par courriel, avec une explication claire. Aucun engagement, aucune pression.</p>
           </article>
@@ -191,15 +208,15 @@
       </div>
     </section>
 
-    <section class="section bg-alt section-border">
+    <section class="section bg-alt section-border lux-section">
       <div class="container about-grid">
-        <div class="about-photo">
+        <div class="about-photo lux-photo-frame" data-reveal>
           <img src="assets/jennie-lee-hero.jpg" alt="Jennie Lee Desbiens-Laberge, courtière immobilière" width="400" height="533" />
         </div>
-        <div>
-          <p class="badge-accent" style="font-size: 0.75rem">Votre courtière à Gatineau</p>
-          <h2 style="margin-top: 1rem">Jennie Lee Desbiens, votre experte du marché de l’Outaouais</h2>
-          <div style="margin-top: 1.5rem" class="text-muted">
+        <div data-reveal>
+          <p class="badge-accent lux-badge">Votre courtière à Gatineau</p>
+          <h2 class="font-display lux-h2" style="margin-top: 1rem">Jennie Lee Desbiens, votre experte du marché de l’Outaouais</h2>
+          <div style="margin-top: 1.5rem" class="text-muted lux-prose">
             <p>
               Reconnue parmi les courtières les plus performantes de la région, Jennie Lee s’appuie sur des données de marché à jour et une expérience concrète des quartiers de Gatineau, Aylmer, Hull et environs pour vous guider avec lucidité.
             </p>
@@ -210,32 +227,32 @@
               Elle place ses clients au centre de chaque transaction et privilégie une négociation respectueuse, alignée sur vos objectifs réels.
             </p>
           </div>
-          <div class="stats-grid">
-            <div class="stat-box"><div class="stat-num">623+</div><div class="stat-label">courtiers dépassés en Outaouais (2023)</div></div>
-            <div class="stat-box"><div class="stat-num">100+</div><div class="stat-label">propriétés vendues</div></div>
-            <div class="stat-box"><div class="stat-num">7/7</div><div class="stat-label">disponibilité</div></div>
-            <div class="stat-box"><div class="stat-num">24h</div><div class="stat-label">délai de réponse garanti</div></div>
+          <div class="stats-grid" data-stagger>
+            <div class="stat-box lux-stat"><div class="stat-num">623+</div><div class="stat-label">courtiers dépassés en Outaouais (2023)</div></div>
+            <div class="stat-box lux-stat"><div class="stat-num">100+</div><div class="stat-label">propriétés vendues</div></div>
+            <div class="stat-box lux-stat"><div class="stat-num">7/7</div><div class="stat-label">disponibilité</div></div>
+            <div class="stat-box lux-stat"><div class="stat-num">24h</div><div class="stat-label">délai de réponse garanti</div></div>
           </div>
-          <button type="button" class="btn btn-ghost" data-scroll-form>Demander mon estimation →</button>
+          <button type="button" class="btn btn-ghost btn-lux-outline btn-magnetic" data-scroll-form>Demander mon estimation →</button>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section lux-section">
       <div class="container">
-        <h2 class="text-center">Ce que disent ses clients</h2>
-        <div class="tiles" style="margin-top: 2.5rem">
-          <article class="tile">
+        <h2 class="text-center font-display lux-h2" data-reveal>Ce que disent ses clients</h2>
+        <div class="tiles lux-tiles" data-stagger style="margin-top: 2.5rem">
+          <article class="tile lux-tile">
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Jennie Lee a été claire du début à la fin. Nous avons eu une estimation réaliste et vendu dans les délais annoncés. Je recommande sans hésiter. »</p>
             <p class="tile-author">Gilles, Gatineau</p>
           </article>
-          <article class="tile">
+          <article class="tile lux-tile">
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Réactive, professionnelle et humaine. Elle a pris le temps d’expliquer le marché et nous a aidés à prendre une décision en confiance. »</p>
             <p class="tile-author">Émilie, Aylmer</p>
           </article>
-          <article class="tile">
+          <article class="tile lux-tile">
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Excellente communication et suivi 7/7. L’estimation correspondait à ce que nous avons finalement obtenu. Service impeccable. »</p>
             <p class="tile-author">Véronique, Hull</p>
@@ -244,27 +261,27 @@
       </div>
     </section>
 
-    <section class="section bg-alt section-border">
+    <section class="section bg-alt section-border lux-section">
       <div class="container faq-wrap">
-        <h2 class="text-center">Questions fréquentes</h2>
-        <div style="margin-top: 2rem">
-          <details class="faq-item">
+        <h2 class="text-center font-display lux-h2" data-reveal>Questions fréquentes</h2>
+        <div class="lux-faq" style="margin-top: 2rem" data-stagger>
+          <details class="faq-item lux-faq-item">
             <summary>Est-ce que l’estimation est vraiment gratuite?</summary>
             <div class="faq-answer">Oui, 100% gratuit, sans aucune obligation. Jennie Lee prépare votre rapport personnalisé sans frais et sans engagement de votre part.</div>
           </details>
-          <details class="faq-item">
+          <details class="faq-item lux-faq-item">
             <summary>Vais-je recevoir des appels de relance?</summary>
             <div class="faq-answer">Jennie Lee vous contactera UNE seule fois pour valider quelques détails et vous remettre votre rapport. Aucune pression, aucun harcèlement.</div>
           </details>
-          <details class="faq-item">
+          <details class="faq-item lux-faq-item">
             <summary>Qu’est-ce qui rend cette estimation différente de Centris ou DuProprio?</summary>
             <div class="faq-answer">L’estimation est basée sur les ventes réelles récentes de votre secteur, analysées par une courtière qui connaît le marché de Gatineau. Pas un algorithme générique, mais une vraie analyse humaine.</div>
           </details>
-          <details class="faq-item">
+          <details class="faq-item lux-faq-item">
             <summary>Je ne suis pas certain de vouloir vendre. Est-ce que je peux quand même demander?</summary>
             <div class="faq-answer">Absolument. Beaucoup de propriétaires demandent une estimation pour simplement connaître la valeur de leur propriété. Vous pouvez nous demander le rapport même si vous n’envisagez de vendre que dans 1 ou 2 ans.</div>
           </details>
-          <details class="faq-item">
+          <details class="faq-item lux-faq-item">
             <summary>Mes informations sont-elles confidentielles?</summary>
             <div class="faq-answer">Oui. Vos données sont strictement confidentielles et ne seront jamais partagées ni vendues. Voir notre politique de confidentialité.</div>
           </details>
@@ -272,12 +289,12 @@
       </div>
     </section>
 
-    <section class="cta-final">
+    <section class="cta-final lux-cta" data-reveal>
       <div class="container">
-        <h2>Prêt à connaître la valeur de votre propriété?</h2>
+        <h2 class="font-display">Prêt à connaître la valeur de votre propriété?</h2>
         <p class="lead">Recevez votre estimation gratuite en 24h. Aucun engagement.</p>
         <div class="btn-wrap">
-          <button type="button" class="btn btn-outline-light" data-scroll-form>Demander mon estimation gratuite</button>
+          <button type="button" class="btn btn-outline-light btn-magnetic btn-cta-glow" data-scroll-form>Demander mon estimation gratuite</button>
         </div>
         <p style="margin-top: 1.5rem">
           <a class="tel" href="tel:+18733535386">Ou appelez directement Jennie Lee: <strong>873-353-5386</strong></a>
@@ -286,7 +303,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer lux-footer" data-reveal>
     <div class="container">
       <div class="footer-grid">
         <div>
@@ -299,12 +316,12 @@
             Agence : Flash Immobilier — 35 Allée de Hambourg, suite 215, Gatineau (QC) J9J 4J6
           </p>
           <p style="margin-top: 0.5rem; font-size: 0.875rem">
-            <a href="mailto:jennieleedesbiens@gmail.com" style="text-decoration: underline; font-weight: 600">jennieleedesbiens@gmail.com</a>
+            <a href="mailto:jennieleedesbiens@gmail.com" class="lux-link">jennieleedesbiens@gmail.com</a>
           </p>
         </div>
         <div style="font-size: 0.875rem">
-          <a href="#politique-confidentialite" style="text-decoration: underline; display: block; margin-bottom: 0.5rem">Politique de confidentialité</a>
-          <a href="#mentions-legales" style="text-decoration: underline">Mentions légales</a>
+          <a href="#politique-confidentialite" class="lux-link" style="display: block; margin-bottom: 0.5rem">Politique de confidentialité</a>
+          <a href="#mentions-legales" class="lux-link">Mentions légales</a>
         </div>
       </div>
       <div class="footer-logos">
@@ -320,16 +337,16 @@
   </footer>
 
   <div id="thanks-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="thanks-title">
-    <div class="modal-box">
-      <h2 id="thanks-title">Merci <span id="thanks-name"></span>!</h2>
+    <div class="modal-box lux-modal">
+      <h2 id="thanks-title" class="font-display">Merci <span id="thanks-name"></span>!</h2>
       <p class="text-muted" style="margin-top: 0.75rem">
         Jennie Lee a bien reçu votre demande. Vous recevrez votre estimation dans les 24h. Pour les demandes urgentes, appelez directement le
         <a href="tel:+18733535386" style="font-weight: 600; color: var(--primary)">873-353-5386</a>.
       </p>
-      <button type="button" class="btn btn-primary" style="margin-top: 1.25rem; width: 100%" data-close-modal>Fermer</button>
+      <button type="button" class="btn btn-primary btn-magnetic" style="margin-top: 1.25rem; width: 100%" data-close-modal>Fermer</button>
     </div>
   </div>
 
-  <script src="main.js?v=4" defer></script>
+  <script src="main.js?v=6" defer></script>
 </body>
 </html>
