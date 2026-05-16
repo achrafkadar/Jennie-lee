@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SplineScene } from "@/components/ui/splite";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
+import { MouseSpotlight } from "@/components/ui/mouse-spotlight";
 import { Button } from "@/components/ui/button";
 
 const DEFAULT_SCENE =
@@ -32,8 +33,9 @@ export function SplineSceneBasic({
         className="-top-40 left-0 md:-top-20 md:left-60"
         fill="white"
       />
+      <MouseSpotlight className="mix-blend-soft-light" size={280} />
 
-      <div className="flex min-h-[480px] flex-col md:h-full md:flex-row">
+      <div className="relative z-10 flex min-h-[480px] flex-col md:h-full md:flex-row">
         <div className="relative z-10 flex flex-1 flex-col justify-center p-6 md:p-8 lg:p-10">
           <h1 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl lg:text-5xl">
             {title}
