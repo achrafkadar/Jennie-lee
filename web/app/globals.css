@@ -15,15 +15,4 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .loader {
-    @apply size-10 rounded-full border-2 border-white/20 border-t-accent;
-    animation: spline-loader-spin 0.75s linear infinite;
-  }
-}
-
-@keyframes spline-loader-spin {
-  to {
-    transform: rotate(360deg);
-  }
 }
