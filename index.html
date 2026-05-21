@@ -19,11 +19,13 @@
     rel="stylesheet"
   />
   <!-- Photo plein écran : remplacez assets/hero-bg.jpg par votre image (large JPG/WebP recommandé). -->
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar"></div></div>
+
   <header class="site-header site-header--lux">
     <div class="header-inner">
       <div>
@@ -49,11 +51,15 @@
       <div class="hero-landing__veil" aria-hidden="true"></div>
       <div class="hero-landing__grain" aria-hidden="true"></div>
       <div class="container hero-landing__inner">
-        <h1 class="hero-landing__title font-display">Combien vaut VRAIMENT votre maison à Gatineau en 2026?</h1>
-        <p class="hero-landing__subtitle">
+        <p class="hero-landing__eyebrow" data-hero-item>
+          <span class="hero-landing__eyebrow-dot" aria-hidden="true"></span>
+          Estimation gratuite · Gatineau &amp; Outaouais
+        </p>
+        <h1 class="hero-landing__title font-display" data-hero-title>Combien vaut VRAIMENT votre maison à Gatineau en 2026?</h1>
+        <p class="hero-landing__subtitle" data-hero-item>
           Recevez une analyse personnalisée basée sur les ventes réelles des 90 derniers jours dans votre secteur — préparée par Jennie Lee Desbiens, Flash Immobilier.
         </p>
-        <button type="button" class="btn-hero-lux btn-magnetic" data-scroll-form>
+        <button type="button" class="btn-hero-lux btn-magnetic" data-scroll-form data-hero-item>
           <span class="btn-hero-lux__shine" aria-hidden="true"></span>
           <span class="btn-hero-lux__label">Recevoir mon estimation gratuitement</span>
           <svg class="btn-hero-lux__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -61,15 +67,23 @@
           </svg>
         </button>
       </div>
+      <button type="button" class="hero-landing__scroll" data-scroll-form data-hero-item aria-label="Aller au formulaire">
+        <span class="hero-landing__scroll-label">Votre estimation</span>
+        <span class="hero-landing__scroll-line" aria-hidden="true"></span>
+        <svg class="hero-landing__scroll-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
     </section>
 
     <!-- Section 2 : formulaire uniquement -->
     <section class="section-form-lux" id="estimation-form">
       <div class="section-form-lux__bg" aria-hidden="true"></div>
       <div class="container section-form-lux__wrap">
-        <div class="form-lux-card" data-reveal>
+        <div class="form-lux-card">
           <div class="form-lux-card__accent" aria-hidden="true"></div>
           <header class="form-lux-card__head">
+            <div class="form-lux-card__icon-head" data-icon-float aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </div>
             <span class="form-lux-kicker">Estimation gratuite · Réponse en 24h</span>
             <h2 class="form-lux-title font-display">Votre demande d’estimation</h2>
             <p class="form-lux-lead">Quelques informations — nous préparons votre rapport personnalisé sans engagement.</p>
@@ -86,31 +100,46 @@
             <input type="hidden" name="fbclid" value="" />
 
             <div class="form-lux-grid">
-              <div class="form-lux-field">
-                <label class="form-lux-label" for="prenom">Prénom *</label>
-                <input class="form-lux-input" id="prenom" name="prenom" type="text" autocomplete="given-name" placeholder=" " required />
-                <p class="form-error" data-error="prenom"></p>
+              <div class="form-lux-field form-lux-field--icon">
+                <span class="form-lux-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <div class="form-lux-field__body">
+                  <label class="form-lux-label" for="prenom">Prénom *</label>
+                  <input class="form-lux-input" id="prenom" name="prenom" type="text" autocomplete="given-name" placeholder=" " required />
+                  <p class="form-error" data-error="prenom"></p>
+                </div>
               </div>
-              <div class="form-lux-field">
-                <label class="form-lux-label" for="nom">Nom *</label>
-                <input class="form-lux-input" id="nom" name="nom" type="text" autocomplete="family-name" placeholder=" " required />
-                <p class="form-error" data-error="nom"></p>
+              <div class="form-lux-field form-lux-field--icon">
+                <span class="form-lux-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+                <div class="form-lux-field__body">
+                  <label class="form-lux-label" for="nom">Nom *</label>
+                  <input class="form-lux-input" id="nom" name="nom" type="text" autocomplete="family-name" placeholder=" " required />
+                  <p class="form-error" data-error="nom"></p>
+                </div>
               </div>
             </div>
-            <div class="form-lux-field">
-              <label class="form-lux-label" for="telephone">Téléphone *</label>
-              <input class="form-lux-input" id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder=" " required />
-              <p class="form-error" data-error="telephone"></p>
+            <div class="form-lux-field form-lux-field--icon">
+              <span class="form-lux-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div class="form-lux-field__body">
+                <label class="form-lux-label" for="telephone">Téléphone *</label>
+                <input class="form-lux-input" id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder=" " required />
+                <p class="form-error" data-error="telephone"></p>
+              </div>
             </div>
-            <div class="form-lux-field">
-              <label class="form-lux-label" for="email">Courriel *</label>
-              <input class="form-lux-input" id="email" name="email" type="email" autocomplete="email" placeholder=" " required />
-              <p class="form-error" data-error="email"></p>
+            <div class="form-lux-field form-lux-field--icon">
+              <span class="form-lux-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <div class="form-lux-field__body">
+                <label class="form-lux-label" for="email">Courriel *</label>
+                <input class="form-lux-input" id="email" name="email" type="email" autocomplete="email" placeholder=" " required />
+                <p class="form-error" data-error="email"></p>
+              </div>
             </div>
-            <div class="form-lux-field">
-              <label class="form-lux-label" for="adresse">Adresse de la propriété *</label>
-              <input class="form-lux-input" id="adresse" name="adresse" type="text" autocomplete="street-address" placeholder=" " required />
-              <p class="form-error" data-error="adresse"></p>
+            <div class="form-lux-field form-lux-field--icon">
+              <span class="form-lux-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="form-lux-field__body">
+                <label class="form-lux-label" for="adresse">Adresse de la propriété *</label>
+                <input class="form-lux-input" id="adresse" name="adresse" type="text" autocomplete="street-address" placeholder=" " required />
+                <p class="form-error" data-error="adresse"></p>
+              </div>
             </div>
             <div class="form-lux-grid">
               <div class="form-lux-field">
@@ -146,6 +175,7 @@
             <button type="submit" class="btn-lux-submit btn-magnetic">
               <span class="btn-lux-submit__glow" aria-hidden="true"></span>
               <span class="btn-lux-submit__text">Recevoir mon estimation gratuite</span>
+              <svg class="btn-lux-submit__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
             <p class="form-lux-hint">
               En soumettant ce formulaire, vous acceptez d’être contacté par Jennie Lee. Vos informations restent strictement confidentielles.
@@ -158,19 +188,19 @@
     <section class="section section-border lux-section bg-alt">
       <div class="container proof-grid" data-stagger>
         <div class="proof-item lux-proof">
-          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">🏆</span></span>
+          <span class="proof-icon-wrap" data-icon-float aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 9H4.5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2H6"/><path d="M18 9h1.5a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
           <p>Plus de 100 transactions complétées</p>
         </div>
         <div class="proof-item lux-proof">
-          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">📜</span></span>
+          <span class="proof-icon-wrap" data-icon-float aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
           <p>Membre OACIQ</p>
         </div>
         <div class="proof-item lux-proof">
-          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">🏢</span></span>
+          <span class="proof-icon-wrap" data-icon-float aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01"/><path d="M9 12v.01"/><path d="M9 15v.01"/><path d="M9 18v.01"/></svg></span>
           <p>Top 41 / 623 courtiers en Outaouais (2023)</p>
         </div>
         <div class="proof-item lux-proof">
-          <span class="proof-icon-wrap" data-icon-float><span class="proof-emoji" aria-hidden="true">📅</span></span>
+          <span class="proof-icon-wrap" data-icon-float aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
           <p>Disponible 7 jours sur 7</p>
         </div>
       </div>
@@ -179,11 +209,14 @@
     <section class="section lux-section">
       <div class="container">
         <div class="text-center lux-heading-block" data-reveal>
+          <span class="lux-section-eyebrow">Processus</span>
           <h2 class="font-display lux-h2">Comment obtenir votre estimation gratuite</h2>
           <p class="lead lux-sub">3 étapes simples, aucune pression</p>
+          <span class="lux-section-line" aria-hidden="true"></span>
         </div>
         <div class="steps-grid lux-steps" data-stagger>
           <article class="step-card lux-card">
+            <span class="lux-step-num" aria-hidden="true">01</span>
             <div class="lux-card__icon" data-icon-float>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg>
             </div>
@@ -191,6 +224,7 @@
             <p>30 secondes. Quelques informations sur votre propriété et vos intentions.</p>
           </article>
           <article class="step-card lux-card">
+            <span class="lux-step-num" aria-hidden="true">02</span>
             <div class="lux-card__icon" data-icon-float>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
             </div>
@@ -198,6 +232,7 @@
             <p>Elle prépare un rapport basé sur les 3 dernières ventes comparables dans votre rue ou votre quartier.</p>
           </article>
           <article class="step-card lux-card">
+            <span class="lux-step-num" aria-hidden="true">03</span>
             <div class="lux-card__icon" data-icon-float>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
@@ -240,19 +275,26 @@
 
     <section class="section lux-section">
       <div class="container">
-        <h2 class="text-center font-display lux-h2" data-reveal>Ce que disent ses clients</h2>
+        <div class="text-center lux-heading-block" data-reveal>
+          <span class="lux-section-eyebrow">Témoignages</span>
+          <h2 class="font-display lux-h2">Ce que disent ses clients</h2>
+          <span class="lux-section-line" aria-hidden="true"></span>
+        </div>
         <div class="tiles lux-tiles" data-stagger style="margin-top: 2.5rem">
           <article class="tile lux-tile">
+            <svg class="tile-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5H3v14zM14 21c3 0 7-1 7-8V5h-7v14z"/></svg>
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Jennie Lee a été claire du début à la fin. Nous avons eu une estimation réaliste et vendu dans les délais annoncés. Je recommande sans hésiter. »</p>
             <p class="tile-author">Gilles, Gatineau</p>
           </article>
           <article class="tile lux-tile">
+            <svg class="tile-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5H3v14zM14 21c3 0 7-1 7-8V5h-7v14z"/></svg>
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Réactive, professionnelle et humaine. Elle a pris le temps d’expliquer le marché et nous a aidés à prendre une décision en confiance. »</p>
             <p class="tile-author">Émilie, Aylmer</p>
           </article>
           <article class="tile lux-tile">
+            <svg class="tile-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5H3v14zM14 21c3 0 7-1 7-8V5h-7v14z"/></svg>
             <div class="stars" aria-label="5 sur 5">★★★★★</div>
             <p class="tile-quote">« Excellente communication et suivi 7/7. L’estimation correspondait à ce que nous avons finalement obtenu. Service impeccable. »</p>
             <p class="tile-author">Véronique, Hull</p>
@@ -263,7 +305,11 @@
 
     <section class="section bg-alt section-border lux-section">
       <div class="container faq-wrap">
-        <h2 class="text-center font-display lux-h2" data-reveal>Questions fréquentes</h2>
+        <div class="text-center lux-heading-block" data-reveal>
+          <span class="lux-section-eyebrow">FAQ</span>
+          <h2 class="font-display lux-h2">Questions fréquentes</h2>
+          <span class="lux-section-line" aria-hidden="true"></span>
+        </div>
         <div class="lux-faq" style="margin-top: 2rem" data-stagger>
           <details class="faq-item lux-faq-item">
             <summary>Est-ce que l’estimation est vraiment gratuite?</summary>
@@ -347,6 +393,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=6" defer></script>
+  <script src="main.js?v=7" defer></script>
 </body>
 </html>

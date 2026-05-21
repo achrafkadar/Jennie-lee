@@ -158,77 +158,37 @@ var WEBHOOK_URL = "";
   }
 })();
 
-/** GSAP + ScrollTrigger : hero, scroll reveals, icônes, boutons magnétiques */
+/** GSAP + ScrollTrigger : hero, scroll, icônes, boutons magnétiques */
 (function initLuxMotion() {
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (typeof gsap === "undefined") return;
 
-  if (!reduce) {
-    var inner = document.querySelector(".hero-landing__inner");
-    if (inner) {
-      gsap.from(inner.children, {
-        autoAlpha: 0,
-        y: 36,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.12,
-        delay: 0.15,
-      });
-    }
+  function splitHeroTitle() {
+    var title = document.querySelector("[data-hero-title]");
+    if (!title || title.dataset.split === "1") return;
+    var text = title.textContent.trim();
+    var words = text.split(/\s+/);
+    title.innerHTML = words
+      .map(function (w) {
+        return (
+          '<span class="hero-word"><span class="hero-word__inner">' +
+          w +
+          "</span></span>"
+        );
+      })
+      .join("");
+    title.dataset.split = "1";
+  }
 
-    document.querySelectorAll("[data-icon-float]").forEach(function (el, i) {
-      gsap.to(el, {
-        y: -5,
-        duration: 1.6 + i * 0.12,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay: i * 0.15,
-      });
-    });
-
-    if (typeof ScrollTrigger !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.utils.toArray("[data-reveal]").forEach(function (el) {
-        gsap.from(el, {
-          scrollTrigger: {
-            trigger: el,
-            start: "top 88%",
-            toggleActions: "play none none none",
-          },
-          y: 48,
-          autoAlpha: 0,
-          duration: 0.9,
-          ease: "power3.out",
-        });
-      });
-      gsap.utils.toArray("[data-stagger]").forEach(function (container) {
-        var ch = gsap.utils.toArray(container.children);
-        if (!ch.length) return;
-        gsap.from(ch, {
-          scrollTrigger: {
-            trigger: container,
-            start: "top 86%",
-            toggleActions: "play none none none",
-          },
-          y: 32,
-          autoAlpha: 0,
-          stagger: 0.11,
-          duration: 0.7,
-          ease: "power2.out",
-        });
-      });
-    }
-
+  function initMagneticButtons() {
     document.querySelectorAll(".btn-magnetic").forEach(function (btn) {
       btn.addEventListener("mousemove", function (e) {
         var r = btn.getBoundingClientRect();
         var x = e.clientX - (r.left + r.width / 2);
         var y = e.clientY - (r.top + r.height / 2);
         gsap.to(btn, {
-          x: x * 0.12,
-          y: y * 0.1,
-          duration: 0.35,
+          x: x * 0.14,
+          y: y * 0.12,
+          duration: 0.4,
           ease: "power2.out",
         });
       });
@@ -236,10 +196,164 @@ var WEBHOOK_URL = "";
         gsap.to(btn, {
           x: 0,
           y: 0,
-          duration: 0.65,
-          ease: "elastic.out(1, 0.5)",
+          duration: 0.7,
+          ease: "elastic.out(1, 0.45)",
         });
       });
     });
   }
+
+  function initIconFloat() {
+    document.querySelectorAll("[data-icon-float]").forEach(function (el, i) {
+      gsap.to(el, {
+        y: -6,
+        rotation: i % 2 === 0 ? 2 : -2,
+        duration: 1.8 + i * 0.1,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: i * 0.12,
+      });
+    });
+  }
+
+  function initScrollAnimations() {
+    if (typeof ScrollTrigger === "undefined") return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    var progressBar = document.querySelector(".scroll-progress__bar");
+    if (progressBar) {
+      gsap.set(progressBar, { scaleX: 0, transformOrigin: "left center" });
+      ScrollTrigger.create({
+        start: 0,
+        end: "max",
+        onUpdate: function (self) {
+          gsap.set(progressBar, { scaleX: self.progress });
+        },
+      });
+    }
+
+    var hero = document.querySelector(".hero-landing");
+    if (hero) {
+      gsap.to(hero, {
+        backgroundPosition: "50% 28%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      });
+    }
+
+    var formCard = document.querySelector(".form-lux-card");
+    if (formCard) {
+      gsap.from(formCard, {
+        scrollTrigger: {
+          trigger: formCard,
+          start: "top 92%",
+          toggleActions: "play none none none",
+        },
+        scale: 0.96,
+        autoAlpha: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.out",
+      });
+    }
+
+    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+        y: 40,
+        autoAlpha: 0,
+        duration: 0.85,
+        ease: "power3.out",
+      });
+    });
+
+    gsap.utils.toArray("[data-stagger]").forEach(function (container) {
+      var ch = gsap.utils.toArray(container.children);
+      if (!ch.length) return;
+      gsap.from(ch, {
+        scrollTrigger: {
+          trigger: container,
+          start: "top 86%",
+          toggleActions: "play none none none",
+        },
+        y: 28,
+        autoAlpha: 0,
+        scale: 0.98,
+        stagger: 0.1,
+        duration: 0.75,
+        ease: "power2.out",
+      });
+    });
+
+    document.querySelectorAll(".lux-card").forEach(function (card) {
+      var icon = card.querySelector(".lux-card__icon");
+      if (!icon) return;
+      card.addEventListener("mouseenter", function () {
+        gsap.to(icon, {
+          scale: 1.08,
+          rotation: 4,
+          duration: 0.45,
+          ease: "power2.out",
+        });
+      });
+      card.addEventListener("mouseleave", function () {
+        gsap.to(icon, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.55,
+          ease: "power2.out",
+        });
+      });
+    });
+  }
+
+  function initHeroIntro() {
+    splitHeroTitle();
+    var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    var words = document.querySelectorAll(".hero-word__inner");
+    if (words.length) {
+      tl.from(words, {
+        yPercent: 110,
+        autoAlpha: 0,
+        duration: 0.85,
+        stagger: 0.035,
+      });
+    }
+    tl.from(
+      "[data-hero-item]",
+      {
+        y: 28,
+        autoAlpha: 0,
+        duration: 0.75,
+        stagger: 0.1,
+      },
+      words.length ? "-=0.35" : 0
+    );
+  }
+
+  var mm = gsap.matchMedia();
+  mm.add("(prefers-reduced-motion: reduce)", function () {
+    splitHeroTitle();
+    gsap.set("[data-hero-item], [data-reveal], .form-lux-card", {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+    });
+  });
+  mm.add("(prefers-reduced-motion: no-preference)", function () {
+    initHeroIntro();
+    initIconFloat();
+    initScrollAnimations();
+    initMagneticButtons();
+  });
 })();
