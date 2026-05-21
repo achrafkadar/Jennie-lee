@@ -4,8 +4,205 @@
  */
 var WEBHOOK_URL = "";
 
+/** Parcours Acheter / Vendre — change tout le site selon le choix */
+(function initPathMode() {
+  var STORAGE_KEY = "flash_immobilier_path";
+
+  var COPY = {
+    sell: {
+      formKicker: "Estimation gratuite · Réponse en 24h",
+      formTitle: "Votre demande d’estimation",
+      formLead:
+        "Quelques informations — nous préparons votre rapport personnalisé sans engagement.",
+      formSubmit: "Recevoir mon estimation gratuite",
+      stepsTitle: "Comment obtenir votre estimation gratuite",
+      stepsSub: "3 étapes simples, aucune pression",
+      aboutCta: "Demander mon estimation →",
+      ctaTitle: "Prêt à connaître la valeur de votre propriété?",
+      ctaLead: "Recevez votre estimation gratuite en 24h. Aucun engagement.",
+      ctaBtn: "Demander mon estimation gratuite",
+      thanksMsg:
+        "Jennie Lee a bien reçu votre demande. Vous recevrez votre estimation dans les 24h. Pour les demandes urgentes, appelez directement le <a href=\"tel:+18733535386\" style=\"font-weight: 600; color: var(--primary)\">873-353-5386</a>.",
+      mailSubject: "Demande d’estimation gratuite — Vendeur",
+    },
+    buy: {
+      formKicker: "Accompagnement acheteur · Réponse en 24h",
+      formTitle: "Parlez-nous de votre projet d’achat",
+      formLead:
+        "Décrivez ce que vous recherchez — Jennie Lee vous guide vers les bonnes propriétés à Gatineau.",
+      formSubmit: "Être contacté gratuitement",
+      stepsTitle: "Comment se déroule l’accompagnement",
+      stepsSub: "Simple, humain, sans pression",
+      aboutCta: "Décrire mon projet d’achat →",
+      ctaTitle: "Prêt à trouver votre prochaine propriété?",
+      ctaLead:
+        "Partagez vos critères — Jennie Lee vous répond en 24h pour lancer votre recherche.",
+      ctaBtn: "Décrire mon projet d’achat",
+      thanksMsg:
+        "Jennie Lee a bien reçu votre demande. Elle vous contactera dans les 24h pour préciser vos critères. Urgent? <a href=\"tel:+18733535386\" style=\"font-weight: 600; color: var(--primary)\">873-353-5386</a>.",
+      mailSubject: "Demande accompagnement acheteur",
+    },
+  };
+
+  function scrollToForm() {
+    var el = document.getElementById("estimation-form");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function updateFormRequired(path) {
+    document.querySelectorAll("[data-required-sell]").forEach(function (el) {
+      el.required = path === "sell";
+    });
+    document.querySelectorAll("[data-required-buy]").forEach(function (el) {
+      el.required = path === "buy";
+    });
+  }
+
+  function applyPath(path, opts) {
+    opts = opts || {};
+    var c = COPY[path];
+    if (!c) return;
+
+    document.body.classList.remove("path-pending");
+    document.body.dataset.path = path;
+    sessionStorage.setItem(STORAGE_KEY, path);
+
+    var intent = document.getElementById("intent");
+    if (intent) intent.value = path;
+
+    document.querySelectorAll("[data-copy]").forEach(function (el) {
+      var key = el.getAttribute("data-copy");
+      if (c[key] == null) return;
+      if (key === "thanksMsg") {
+        el.innerHTML = c[key];
+      } else {
+        el.textContent = c[key];
+      }
+    });
+
+    var stepsSell = document.querySelector("[data-steps-sell]");
+    var stepsBuy = document.querySelector("[data-steps-buy]");
+    if (stepsSell) stepsSell.hidden = path !== "sell";
+    if (stepsBuy) stepsBuy.hidden = path !== "buy";
+
+    var faqSell = document.querySelector("[data-faq-sell]");
+    var faqBuy = document.querySelector("[data-faq-buy]");
+    if (faqSell) faqSell.hidden = path !== "sell";
+    if (faqBuy) faqBuy.hidden = path !== "buy";
+
+    updateFormRequired(path);
+
+    var siteContent = document.getElementById("site-content");
+    if (siteContent) {
+      siteContent.hidden = false;
+      siteContent.classList.add("is-visible");
+    }
+
+    var nav = document.querySelector("[data-path-nav]");
+    if (nav) nav.removeAttribute("aria-hidden");
+
+    if (!opts.skipScroll) {
+      setTimeout(scrollToForm, opts.animateHero ? 480 : 80);
+    }
+
+    if (typeof ScrollTrigger !== "undefined") {
+      ScrollTrigger.refresh(true);
+    }
+
+    document.dispatchEvent(
+      new CustomEvent("flash:path", { detail: { path: path } })
+    );
+  }
+
+  function collapseHero(path, done) {
+    var hero = document.querySelector(".hero-split");
+    if (!hero) {
+      done();
+      return;
+    }
+
+    var panel = hero.querySelector(".hero-split__panel--" + path);
+    var other = hero.querySelector(
+      ".hero-split__panel--" + (path === "buy" ? "sell" : "buy")
+    );
+
+    if (typeof gsap === "undefined") {
+      hero.classList.add("hero-split--done");
+      document.body.classList.add("hero-resolved");
+      done();
+      return;
+    }
+
+    var tl = gsap.timeline({
+      defaults: { ease: "power3.inOut" },
+      onComplete: function () {
+        hero.classList.add("hero-split--done");
+        document.body.classList.add("hero-resolved");
+        done();
+      },
+    });
+
+    tl.to(
+      [".hero-split__center", ".hero-split__divider"],
+      { autoAlpha: 0, duration: 0.35 },
+      0
+    );
+    if (other) tl.to(other, { autoAlpha: 0, duration: 0.4 }, 0);
+    if (panel) {
+      tl.to(
+        panel,
+        {
+          flex: "1 1 100%",
+          duration: 0.55,
+        },
+        0
+      );
+    }
+    tl.to(hero, { height: 0, minHeight: 0, duration: 0.5 }, 0.2);
+  }
+
+  function selectPath(path, opts) {
+    opts = opts || {};
+    if (path !== "buy" && path !== "sell") return;
+
+    if (document.body.dataset.path === path && !opts.force) {
+      scrollToForm();
+      return;
+    }
+
+    collapseHero(path, function () {
+      applyPath(path, {
+        skipScroll: opts.skipScroll,
+        animateHero: true,
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-path-select]").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      selectPath(btn.getAttribute("data-path-select"), {});
+    });
+  });
+
+  var saved = sessionStorage.getItem(STORAGE_KEY);
+  if (saved === "buy" || saved === "sell") {
+    var hero = document.querySelector(".hero-split");
+    if (hero) hero.classList.add("hero-split--done");
+    document.body.classList.add("hero-resolved");
+    applyPath(saved, { skipScroll: true });
+  }
+
+  window.flashSetPath = selectPath;
+  window.flashScrollToForm = scrollToForm;
+})();
+
 (function () {
   function scrollToForm() {
+    if (window.flashScrollToForm) {
+      window.flashScrollToForm();
+      return;
+    }
     var el = document.getElementById("estimation-form");
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -53,17 +250,27 @@ var WEBHOOK_URL = "";
   var phoneRe =
     /^(\+?1[\s.-]?)?\(?([0-9]{3})\)?[\s.-]?([0-9]{3})[\s.-]?([0-9]{4})$/;
 
+  function getPath() {
+    return document.body.dataset.path || "sell";
+  }
+
   function validate(data) {
     var err = {};
+    var path = getPath();
     if (!data.prenom.trim()) err.prenom = "Le prénom est requis";
     if (!data.nom.trim()) err.nom = "Le nom est requis";
     if (!phoneRe.test(data.telephone.replace(/\s/g, "")))
       err.telephone = "Format téléphone canadien attendu";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
       err.email = "Courriel invalide";
-    if (data.adresse.trim().length < 5) err.adresse = "L’adresse est requise";
     if (!data.typePropriete) err.typePropriete = "Choisissez un type";
-    if (!data.quandVendre) err.quandVendre = "Ce champ est requis";
+    if (path === "sell") {
+      if (data.adresse.trim().length < 5) err.adresse = "L’adresse est requise";
+      if (!data.quandVendre) err.quandVendre = "Ce champ est requis";
+    } else {
+      if (data.secteur.trim().length < 2) err.secteur = "Indiquez un secteur ou quartier";
+      if (!data.quandAcheter) err.quandAcheter = "Ce champ est requis";
+    }
     return err;
   }
 
@@ -81,13 +288,17 @@ var WEBHOOK_URL = "";
     e.preventDefault();
     var fd = new FormData(form);
     var data = {
+      intent: fd.get("intent") || getPath(),
       prenom: fd.get("prenom") || "",
       nom: fd.get("nom") || "",
       telephone: fd.get("telephone") || "",
       email: fd.get("email") || "",
       adresse: fd.get("adresse") || "",
+      secteur: fd.get("secteur") || "",
       typePropriete: fd.get("typePropriete") || "",
       quandVendre: fd.get("quandVendre") || "",
+      quandAcheter: fd.get("quandAcheter") || "",
+      budget: fd.get("budget") || "",
       utm_source: fd.get("utm_source") || "",
       utm_medium: fd.get("utm_medium") || "",
       utm_campaign: fd.get("utm_campaign") || "",
@@ -143,7 +354,12 @@ var WEBHOOK_URL = "";
         return k + ": " + data[k];
       })
       .join("\n");
-    var subject = encodeURIComponent("Demande d’estimation gratuite");
+    var path = getPath();
+    var subjectText =
+      path === "buy"
+        ? "Demande accompagnement acheteur"
+        : "Demande d’estimation gratuite";
+    var subject = encodeURIComponent(subjectText);
     var body = encodeURIComponent(lines);
     window.location.href =
       "mailto:jennieleedesbiens@gmail.com?subject=" + subject + "&body=" + body;
@@ -158,25 +374,31 @@ var WEBHOOK_URL = "";
   }
 })();
 
-/** GSAP + ScrollTrigger : hero, scroll, icônes, boutons magnétiques */
+/** GSAP + ScrollTrigger : hero split, scroll, icônes, boutons magnétiques */
 (function initLuxMotion() {
   if (typeof gsap === "undefined") return;
 
-  function splitHeroTitle() {
-    var title = document.querySelector("[data-hero-title]");
-    if (!title || title.dataset.split === "1") return;
-    var text = title.textContent.trim();
-    var words = text.split(/\s+/);
-    title.innerHTML = words
-      .map(function (w) {
-        return (
-          '<span class="hero-word"><span class="hero-word__inner">' +
-          w +
-          "</span></span>"
-        );
-      })
-      .join("");
-    title.dataset.split = "1";
+  function initHeroSplitIntro() {
+    if (!document.body.classList.contains("path-pending")) return;
+    var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.from(".hero-split__center > *", {
+      y: 24,
+      autoAlpha: 0,
+      duration: 0.7,
+      stagger: 0.08,
+      delay: 0.1,
+    });
+    tl.from(
+      ".hero-split__panel-inner > *",
+      {
+        y: 20,
+        autoAlpha: 0,
+        duration: 0.65,
+        stagger: 0.05,
+      },
+      "-=0.4"
+    );
+    tl.from(".hero-split__divider", { scale: 0.8, autoAlpha: 0, duration: 0.5 }, "-=0.5");
   }
 
   function initMagneticButtons() {
@@ -229,20 +451,6 @@ var WEBHOOK_URL = "";
         end: "max",
         onUpdate: function (self) {
           gsap.set(progressBar, { scaleX: self.progress });
-        },
-      });
-    }
-
-    var hero = document.querySelector(".hero-landing");
-    if (hero) {
-      gsap.to(hero, {
-        backgroundPosition: "50% 28%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.6,
         },
       });
     }
@@ -317,43 +525,23 @@ var WEBHOOK_URL = "";
     });
   }
 
-  function initHeroIntro() {
-    splitHeroTitle();
-    var tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    var words = document.querySelectorAll(".hero-word__inner");
-    if (words.length) {
-      tl.from(words, {
-        yPercent: 110,
-        autoAlpha: 0,
-        duration: 0.85,
-        stagger: 0.035,
-      });
-    }
-    tl.from(
-      "[data-hero-item]",
-      {
-        y: 28,
-        autoAlpha: 0,
-        duration: 0.75,
-        stagger: 0.1,
-      },
-      words.length ? "-=0.35" : 0
-    );
+  function bootScrollFx() {
+    initIconFloat();
+    initScrollAnimations();
+    initMagneticButtons();
   }
 
   var mm = gsap.matchMedia();
   mm.add("(prefers-reduced-motion: reduce)", function () {
-    splitHeroTitle();
-    gsap.set("[data-hero-item], [data-reveal], .form-lux-card", {
+    gsap.set("[data-reveal], .form-lux-card, .hero-split__center, .hero-split__panel-inner", {
       autoAlpha: 1,
       y: 0,
       scale: 1,
     });
   });
   mm.add("(prefers-reduced-motion: no-preference)", function () {
-    initHeroIntro();
-    initIconFloat();
-    initScrollAnimations();
-    initMagneticButtons();
+    initHeroSplitIntro();
+    bootScrollFx();
   });
+
 })();
