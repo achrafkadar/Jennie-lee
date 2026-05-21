@@ -142,11 +142,6 @@ var WEBHOOK_URL = "";
       },
     });
 
-    tl.to(
-      [".hero-split__center", ".hero-split__divider"],
-      { autoAlpha: 0, duration: 0.35 },
-      0
-    );
     if (other) tl.to(other, { autoAlpha: 0, duration: 0.4 }, 0);
     if (panel) {
       tl.to(
@@ -381,24 +376,13 @@ var WEBHOOK_URL = "";
   function initHeroSplitIntro() {
     if (!document.body.classList.contains("path-pending")) return;
     var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(".hero-split__center > *", {
-      y: 24,
+    tl.from(".hero-split__panel-inner > *", {
+      y: 22,
       autoAlpha: 0,
-      duration: 0.7,
+      duration: 0.75,
       stagger: 0.08,
-      delay: 0.1,
+      delay: 0.15,
     });
-    tl.from(
-      ".hero-split__panel-inner > *",
-      {
-        y: 20,
-        autoAlpha: 0,
-        duration: 0.65,
-        stagger: 0.05,
-      },
-      "-=0.4"
-    );
-    tl.from(".hero-split__divider", { scale: 0.8, autoAlpha: 0, duration: 0.5 }, "-=0.5");
   }
 
   function initMagneticButtons() {
@@ -533,7 +517,7 @@ var WEBHOOK_URL = "";
 
   var mm = gsap.matchMedia();
   mm.add("(prefers-reduced-motion: reduce)", function () {
-    gsap.set("[data-reveal], .form-lux-card, .hero-split__center, .hero-split__panel-inner", {
+    gsap.set("[data-reveal], .form-lux-card, .hero-split__panel-inner", {
       autoAlpha: 1,
       y: 0,
       scale: 1,
