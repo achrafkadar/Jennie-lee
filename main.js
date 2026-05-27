@@ -16,13 +16,30 @@ var WEBHOOK_URL = "";
     });
   });
 
+  document.querySelectorAll("[data-hero-intent]").forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      var intent = btn.getAttribute("data-hero-intent");
+      var field = document.getElementById("intent");
+      if (field && (intent === "buy" || intent === "sell")) field.value = intent;
+      scrollToForm();
+    });
+  });
+
   var header = document.querySelector(".header");
   function onScroll() {
     if (!header) return;
-    header.classList.toggle("header--scrolled", window.scrollY > 8);
+    header.classList.toggle("header--solid", window.scrollY > 48);
   }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
+
+  var heroVid = document.querySelector(".hero-video__el");
+  if (heroVid) {
+    heroVid.addEventListener("error", function () {
+      heroVid.style.display = "none";
+    });
+  }
 
   var params = new URLSearchParams(window.location.search);
   ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"].forEach(
@@ -74,6 +91,7 @@ var WEBHOOK_URL = "";
     e.preventDefault();
     var fd = new FormData(form);
     var data = {
+      intent: fd.get("intent") || "",
       prenom: fd.get("prenom") || "",
       nom: fd.get("nom") || "",
       telephone: fd.get("telephone") || "",

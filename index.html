@@ -14,10 +14,10 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
-  <header class="header">
+  <header class="header" id="site-header">
     <div class="wrap header__inner">
       <a href="#hero" class="header__name font-display">Jennie Lee Desbiens</a>
       <a class="header__phone" href="tel:+18733535386">873-353-5386</a>
@@ -25,14 +25,29 @@
   </header>
 
   <main>
-    <section class="hero" id="hero" style="--hero-img: url('assets/hero-bg.jpg')">
-      <div class="wrap hero__content">
-        <p class="hero__agency">Flash Immobilier · Gatineau &amp; Outaouais</p>
-        <h1 class="hero__title font-display">Courtière immobilière à votre écoute</h1>
-        <p class="hero__lead">
-          Estimation gratuite, conseil sans jargon et suivi sérieux. Une approche calme, professionnelle — à votre rythme.
-        </p>
-        <button type="button" class="btn btn--gold" data-scroll-form>Estimation gratuite</button>
+    <!-- Vidéo : placez votre fichier MP4 dans assets/hero.mp4 (même dossier que ce HTML). Image de secours : assets/hero-bg.jpg -->
+    <section class="hero-video" id="hero">
+      <div class="hero-video__media" aria-hidden="true">
+        <video
+          class="hero-video__el"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/hero-bg.jpg"
+        >
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-video__shade" aria-hidden="true"></div>
+      <div class="hero-video__content">
+        <p class="hero-video__brand">Flash Immobilier</p>
+        <h1 class="hero-video__title font-display">Immobilier résidentiel à Gatineau &amp; en Outaouais</h1>
+        <p class="hero-video__line">Estimation gratuite · Accompagnement acheteur — une équipe à votre écoute.</p>
+        <div class="hero-video__ctas">
+          <button type="button" class="hero-video__btn hero-video__btn--buy" data-hero-intent="buy">Je veux acheter</button>
+          <button type="button" class="hero-video__btn hero-video__btn--sell" data-hero-intent="sell">Je veux vendre</button>
+        </div>
       </div>
     </section>
 
@@ -43,6 +58,7 @@
           <p class="form-head__sub">Quelques informations suffisent. Je vous réponds sous 24 h.</p>
         </header>
         <form id="lead-form" class="form" novalidate>
+          <input type="hidden" name="intent" id="intent" value="" />
           <input type="hidden" name="utm_source" value="" />
           <input type="hidden" name="utm_medium" value="" />
           <input type="hidden" name="utm_campaign" value="" />
@@ -220,6 +236,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=11" defer></script>
+  <script src="main.js?v=12" defer></script>
 </body>
 </html>
