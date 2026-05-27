@@ -417,6 +417,115 @@ nav {
   letter-spacing: -0.02em;
 }
 
+/* ── Bio Jennie-Lee — split pleine largeur ── */
+.bio-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: min(88vh, 720px);
+  background: var(--cream);
+}
+
+.bio-split__text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 72px clamp(24px, 5vw, 64px);
+  background: var(--cream);
+}
+
+.bio-split__inner {
+  width: 100%;
+  max-width: 480px;
+}
+
+.bio-split__photo {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+/* fondu léger sur le bord gauche de la photo — pas de ligne visible */
+.bio-split__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 18%;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bio-split__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.bio-title {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.bio-role {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--blue-accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 22px;
+}
+
+.bio-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.bio-highlights {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 28px 0 32px;
+  padding: 0;
+}
+
+.bio-highlights li {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue-mid);
+  background: var(--blue-xlight);
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: 9999px;
+}
+
+.bio-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue-accent-bright) 0%, var(--blue-accent) 55%, #1d4ed8 100%);
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.bio-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(37, 99, 235, 0.4);
+  filter: brightness(1.04);
+}
+
 .how-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1034,6 +1143,40 @@ footer a:hover {
 
   .section {
     padding: 60px 24px;
+  }
+
+  .bio-split {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .bio-split__text {
+    justify-content: center;
+    padding: 56px 24px 40px;
+  }
+
+  .bio-split__inner {
+    max-width: none;
+  }
+
+  .bio-split__photo {
+    min-height: 420px;
+    max-height: 520px;
+  }
+
+  .bio-split__photo::after {
+    width: 100%;
+    height: 22%;
+    inset: 0 0 auto 0;
+    background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+  }
+
+  .bio-title {
+    font-size: 28px;
+  }
+
+  .bio-highlights {
+    margin-bottom: 24px;
   }
 
   .trust-bar {
