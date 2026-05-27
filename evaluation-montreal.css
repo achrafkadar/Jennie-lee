@@ -439,20 +439,8 @@ nav {
 }
 
 .bio-split__photo {
-  position: relative;
   min-height: 420px;
   overflow: hidden;
-}
-
-/* fondu léger sur le bord gauche de la photo — pas de ligne visible */
-.bio-split__photo::after {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 18%;
-  background: linear-gradient(to right, var(--cream) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
 }
 
 .bio-split__photo img {
@@ -1162,13 +1150,6 @@ footer a:hover {
   .bio-split__photo {
     min-height: 420px;
     max-height: 520px;
-  }
-
-  .bio-split__photo::after {
-    width: 100%;
-    height: 22%;
-    inset: 0 0 auto 0;
-    background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
   }
 
   .bio-title {
