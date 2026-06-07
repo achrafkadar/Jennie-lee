@@ -32,7 +32,7 @@ Cliquez dans les champs `{{...}}` pour choisir les données du **module 1** :
   "from": "FlashImmobilier <onboarding@resend.dev>",
   "to": ["jennieleedesbiens@gmail.com"],
   "subject": "Nouveau lead {{1.intent}} — {{1.prenom}}",
-  "text": "Projet: {{1.intent}}\nPrénom: {{1.prenom}}\nTél: {{1.telephone}}\nCourriel: {{1.email}}\nAdresse: {{1.adresse}}\nType: {{1.typePropriete}}\nHorizon vente: {{1.quandVendre}}\nSecteur: {{1.secteur}}\nBudget: {{1.budget}}\nDélai achat: {{1.quandAcheter}}\nPré-approbation: {{1.preapproval}}\nPage: {{1.page_url}}\nDate: {{1.submitted_at}}"
+  "text": "Projet: {{1.intent}}\nPrénom: {{1.prenom}}\nNom: {{1.nom}}\nTél: {{1.telephone}}\nCourriel: {{1.email}}\nLangue: {{1.langue}}\nAdresse: {{1.adresse}}\nPage: {{1.page_url}}\nDate: {{1.submitted_at}}"
 }
 ```
 

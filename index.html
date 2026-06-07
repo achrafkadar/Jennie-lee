@@ -14,86 +14,98 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="evaluation-montreal.css?v=13" />
+  <link rel="stylesheet" href="evaluation-montreal.css?v=15" />
 </head>
 <body data-intent="sell">
-  <div class="topbar">
-    Réponse garantie sous <span>24 heures</span> · Évaluation <span>100% gratuite</span> · Sans engagement
-  </div>
+  <div class="topbar" data-i18n-html="topbar"></div>
 
   <nav>
-    <div class="logo">Flash<span>Immobilier</span></div>
-    <a href="#form" class="nav-cta" id="nav-cta">Évaluation gratuite</a>
+    <div class="nav__brand">
+      <a href="#" class="nav__logo-link" aria-label="FlashImmobilier">
+        <img class="nav__logo nav__logo--flash" src="assets/logo-flash.svg" alt="FlashImmobilier" width="160" height="38" />
+      </a>
+      <span class="nav__logo-sep" aria-hidden="true"></span>
+      <a href="#" class="nav__logo-link" aria-label="Équipe Desbiens">
+        <img class="nav__logo nav__logo--desbiens" src="assets/logo-equipe-desbiens.svg" alt="Équipe Desbiens" width="140" height="38" />
+      </a>
+    </div>
+    <div class="nav__actions">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang">
+        <button type="button" class="lang-switch__btn is-active" data-set-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#form" class="nav-cta" id="nav-cta" data-i18n="nav.cta.sell">Évaluation gratuite</a>
+    </div>
   </nav>
 
   <div class="hero-surface">
     <div class="hero">
       <div class="hero-left">
         <div class="intent-hero-card">
-          <span class="hero-badge">Gatineau &amp; Outaouais</span>
-          <p class="intent-hero-card__lead">Quel est votre projet ?</p>
-          <div class="intent-toggle" role="group" aria-label="Votre projet">
+          <span class="hero-badge" data-i18n="hero.badge">Gatineau &amp; Outaouais</span>
+          <p class="intent-hero-card__lead" data-i18n="hero.project">Quel est votre projet ?</p>
+          <div class="intent-toggle" role="group" data-i18n-aria="hero.project.aria">
             <button type="button" class="intent-toggle__btn is-active" data-intent-select="sell" aria-pressed="true">
-              <span class="intent-toggle__label">Je veux vendre</span>
-              <span class="intent-toggle__hint">Évaluation gratuite</span>
+              <span class="intent-toggle__label" data-i18n="hero.sell.label">Je veux vendre</span>
+              <span class="intent-toggle__hint" data-i18n="hero.sell.hint">Évaluation gratuite</span>
             </button>
             <button type="button" class="intent-toggle__btn" data-intent-select="buy" aria-pressed="false">
-              <span class="intent-toggle__label">Je veux acheter</span>
-              <span class="intent-toggle__hint">Accompagnement acheteur</span>
+              <span class="intent-toggle__label" data-i18n="hero.buy.label">Je veux acheter</span>
+              <span class="intent-toggle__hint" data-i18n="hero.buy.hint">Accompagnement acheteur</span>
             </button>
           </div>
         </div>
 
         <div class="hero-main intent-sell-only">
-          <h1 class="hero-title">
+          <h1 class="hero-title" data-i18n-html="hero.sell.title">
             Combien vaut<br />
             <em>vraiment</em> votre<br />
             propriété ?
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="hero.sell.sub">
             Obtenez une évaluation comparative précise pour Gatineau et l’Outaouais, basée sur les ventes réelles dans votre secteur — pas un estimateur automatique, pas de données périmées.
           </p>
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-num">98<sup>%</sup></div>
-              <div class="stat-label">Du prix de liste atteint</div>
+              <div class="stat-num">5,0</div>
+              <div class="stat-label" data-i18n="stat.google">Note Google · 120 avis</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-              <div class="stat-num">21</div>
-              <div class="stat-label">Jours sur le marché en moyenne</div>
+              <div class="stat-num">24<sup>h</sup></div>
+              <div class="stat-label" data-i18n="stat.response">Pour vous répondre</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
-              <div class="stat-num">150<sup>+</sup></div>
-              <div class="stat-label">Ventes réalisées cette année</div>
+              <div class="stat-num">100<sup>+</sup></div>
+              <div class="stat-label" data-i18n="stat.transactions">Transactions accompagnées</div>
             </div>
           </div>
         </div>
 
         <div class="hero-main intent-buy-only">
-          <h1 class="hero-title">
+          <h1 class="hero-title" data-i18n-html="hero.buy.title">
             Trouvez la maison<br />
             <em>qu’il vous faut</em><br />
             en Outaouais
           </h1>
-          <p class="hero-sub">
+          <p class="hero-sub" data-i18n="hero.buy.sub">
             Accompagnement acheteur personnalisé : secteurs, visites, analyse du marché et stratégie d’offre — sans pression, avec une courtière qui connaît Gatineau et les environs.
           </p>
           <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-num">5,0</div>
-              <div class="stat-label">Note Google · 120 avis</div>
+              <div class="stat-label" data-i18n="stat.google">Note Google · 120 avis</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
               <div class="stat-num">24<sup>h</sup></div>
-              <div class="stat-label">Pour vous répondre</div>
+              <div class="stat-label" data-i18n="stat.response">Pour vous répondre</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
               <div class="stat-num">1<sup>ère</sup></div>
-              <div class="stat-label">Maison bien accompagnée</div>
+              <div class="stat-label" data-i18n="stat.firstHome">Maison bien accompagnée</div>
             </div>
           </div>
         </div>
@@ -105,68 +117,61 @@
           <input type="text" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="form-header">
-            <div class="form-title">Recevez votre évaluation gratuite</div>
-            <div class="form-sub">Formulaire de 60 secondes · Aucune visite requise</div>
+            <div class="form-title" data-i18n="form.sell.title">Recevez votre évaluation gratuite</div>
+            <div class="form-sub" data-i18n="form.sell.sub">Quelques informations · Réponse sous 24 h</div>
           </div>
 
           <p class="form-banner-error" data-form-error="sell" hidden></p>
 
           <div class="form-group">
-            <label class="form-label" for="addr">Adresse de la propriété *</label>
-            <input class="form-input" id="addr" name="adresse" type="text" required placeholder="123 rue Exemple, Gatineau" />
+            <label class="form-label" for="addr" data-i18n="form.address">Adresse de la propriété *</label>
+            <input class="form-input" id="addr" name="adresse" type="text" required data-i18n-placeholder="form.placeholder.address" placeholder="123 rue Exemple, Gatineau" autocomplete="street-address" />
             <p class="form-field-error" data-error="adresse"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="ptype">Type de propriété *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="ptype" name="typePropriete" required>
-                <option value="">Sélectionnez…</option>
-                <option>Maison unifamiliale</option>
-                <option>Condo / Appartement</option>
-                <option>Duplex / Triplex</option>
-                <option>Maison de ville</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <p class="form-field-error" data-error="typePropriete"></p>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="prenom">Prénom *</label>
+              <label class="form-label" for="prenom" data-i18n="form.firstName">Prénom *</label>
               <input class="form-input" id="prenom" name="prenom" type="text" required placeholder="Marie" autocomplete="given-name" />
               <p class="form-field-error" data-error="prenom"></p>
             </div>
             <div class="form-group">
-              <label class="form-label" for="tel">Téléphone *</label>
+              <label class="form-label" for="nom" data-i18n="form.lastName">Nom de famille *</label>
+              <input class="form-input" id="nom" name="nom" type="text" required placeholder="Tremblay" autocomplete="family-name" />
+              <p class="form-field-error" data-error="nom"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tel" data-i18n="form.phone">Numéro de téléphone *</label>
               <input class="form-input" id="tel" name="telephone" type="tel" required placeholder="819 000-0000" autocomplete="tel" />
               <p class="form-field-error" data-error="telephone"></p>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="email">Courriel</label>
-            <input class="form-input" id="email" name="email" type="email" placeholder="vous@exemple.com" autocomplete="email" />
-            <p class="form-field-error" data-error="email"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="horizon">Horizon de vente envisagé *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="horizon" name="quandVendre" required>
-                <option value="">Sélectionnez…</option>
-                <option>Moins de 3 mois</option>
-                <option>3 à 6 mois</option>
-                <option>6 à 12 mois</option>
-                <option>Je me renseigne seulement</option>
-              </select>
+            <div class="form-group">
+              <label class="form-label" for="email" data-i18n="form.email">Courriel *</label>
+              <input class="form-input" id="email" name="email" type="email" required data-i18n-placeholder="form.placeholder.email" placeholder="vous@exemple.com" autocomplete="email" />
+              <p class="form-field-error" data-error="email"></p>
             </div>
-            <p class="form-field-error" data-error="quandVendre"></p>
           </div>
+
+          <fieldset class="form-group form-lang">
+            <legend class="form-label" data-i18n="form.langLegend">Langue de préférence *</legend>
+            <div class="form-lang__options">
+              <label class="form-lang__option">
+                <input type="radio" name="langue" value="FR" required />
+                <span data-i18n="form.lang.fr">Français</span>
+              </label>
+              <label class="form-lang__option">
+                <input type="radio" name="langue" value="EN" required />
+                <span data-i18n="form.lang.en">English</span>
+              </label>
+            </div>
+            <p class="form-field-error" data-error="langue"></p>
+          </fieldset>
 
           <button type="submit" class="btn-primary" data-lead-submit>
-            <span>Recevoir mon évaluation gratuite</span>
+            <span data-i18n="form.submit.sell">Recevoir mon évaluation gratuite</span>
             <span class="btn-arrow">→</span>
           </button>
 
@@ -175,7 +180,7 @@
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
-            Vos informations sont confidentielles et ne seront jamais revendues.
+            <span data-i18n="form.trust">Vos informations sont confidentielles et ne seront jamais revendues.</span>
           </div>
         </form>
 
@@ -184,105 +189,55 @@
           <input type="text" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="form-header">
-            <div class="form-title">Démarrez votre recherche</div>
-            <div class="form-sub">Gratuit · Sans engagement · Réponse sous 24 h</div>
+            <div class="form-title" data-i18n="form.buy.title">Démarrez votre recherche</div>
+            <div class="form-sub" data-i18n="form.buy.sub">Quelques informations · Réponse sous 24 h</div>
           </div>
 
           <p class="form-banner-error" data-form-error="buy" hidden></p>
 
-          <div class="form-group">
-            <label class="form-label" for="buy-sector">Secteur recherché *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="buy-sector" name="secteur" required>
-                <option value="">Sélectionnez…</option>
-                <option>Gatineau</option>
-                <option>Aylmer</option>
-                <option>Hull</option>
-                <option>Masson-Angers</option>
-                <option>Cantley / Val-des-Monts</option>
-                <option>Plusieurs secteurs</option>
-              </select>
-            </div>
-            <p class="form-field-error" data-error="secteur"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buy-ptype">Type de propriété *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="buy-ptype" name="typePropriete" required>
-                <option value="">Sélectionnez…</option>
-                <option>Maison unifamiliale</option>
-                <option>Condo / Appartement</option>
-                <option>Duplex / Triplex</option>
-                <option>Maison de ville</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <p class="form-field-error" data-error="typePropriete"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buy-budget">Budget approximatif *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="buy-budget" name="budget" required>
-                <option value="">Sélectionnez…</option>
-                <option>Moins de 350 000 $</option>
-                <option>350 000 $ – 500 000 $</option>
-                <option>500 000 $ – 750 000 $</option>
-                <option>750 000 $ et plus</option>
-                <option>À définir avec Jennie-Lee</option>
-              </select>
-            </div>
-            <p class="form-field-error" data-error="budget"></p>
-          </div>
-
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="buy-prenom">Prénom *</label>
+              <label class="form-label" for="buy-prenom" data-i18n="form.firstName">Prénom *</label>
               <input class="form-input" id="buy-prenom" name="prenom" type="text" required placeholder="Alex" autocomplete="given-name" />
               <p class="form-field-error" data-error="prenom"></p>
             </div>
             <div class="form-group">
-              <label class="form-label" for="buy-tel">Téléphone *</label>
+              <label class="form-label" for="buy-nom" data-i18n="form.lastName">Nom de famille *</label>
+              <input class="form-input" id="buy-nom" name="nom" type="text" required placeholder="Gagnon" autocomplete="family-name" />
+              <p class="form-field-error" data-error="nom"></p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="buy-tel" data-i18n="form.phone">Numéro de téléphone *</label>
               <input class="form-input" id="buy-tel" name="telephone" type="tel" required placeholder="819 000-0000" autocomplete="tel" />
               <p class="form-field-error" data-error="telephone"></p>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buy-email">Courriel</label>
-            <input class="form-input" id="buy-email" name="email" type="email" placeholder="vous@exemple.com" autocomplete="email" />
-            <p class="form-field-error" data-error="email"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buy-horizon">Délai d’achat envisagé *</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="buy-horizon" name="quandAcheter" required>
-                <option value="">Sélectionnez…</option>
-                <option>Moins de 3 mois</option>
-                <option>3 à 6 mois</option>
-                <option>6 à 12 mois</option>
-                <option>Je me renseigne seulement</option>
-              </select>
-            </div>
-            <p class="form-field-error" data-error="quandAcheter"></p>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="buy-preapproval">Pré-approbation hypothécaire</label>
-            <div class="form-select-wrapper">
-              <select class="form-select" id="buy-preapproval" name="preapproval">
-                <option value="">Sélectionnez…</option>
-                <option>Oui, j’en ai une</option>
-                <option>En cours</option>
-                <option>Pas encore</option>
-              </select>
+            <div class="form-group">
+              <label class="form-label" for="buy-email" data-i18n="form.email">Courriel *</label>
+              <input class="form-input" id="buy-email" name="email" type="email" required data-i18n-placeholder="form.placeholder.email" placeholder="vous@exemple.com" autocomplete="email" />
+              <p class="form-field-error" data-error="email"></p>
             </div>
           </div>
+
+          <fieldset class="form-group form-lang">
+            <legend class="form-label" data-i18n="form.langLegend">Langue de préférence *</legend>
+            <div class="form-lang__options">
+              <label class="form-lang__option">
+                <input type="radio" name="langue" value="FR" required />
+                <span data-i18n="form.lang.fr">Français</span>
+              </label>
+              <label class="form-lang__option">
+                <input type="radio" name="langue" value="EN" required />
+                <span data-i18n="form.lang.en">English</span>
+              </label>
+            </div>
+            <p class="form-field-error" data-error="langue"></p>
+          </fieldset>
 
           <button type="submit" class="btn-primary" data-lead-submit>
-            <span>Parler à Jennie-Lee de mon projet</span>
+            <span data-i18n="form.submit.buy">Parler à Jennie-Lee de mon projet</span>
             <span class="btn-arrow">→</span>
           </button>
 
@@ -291,7 +246,7 @@
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
-            Vos informations sont confidentielles et ne seront jamais revendues.
+            <span data-i18n="form.trust">Vos informations sont confidentielles et ne seront jamais revendues.</span>
           </div>
         </form>
       </div>
@@ -301,31 +256,31 @@
   <section class="bio-split" aria-labelledby="bio-title">
     <div class="bio-split__text">
       <div class="bio-split__inner">
-        <div class="section-tag">Votre courtière</div>
+        <div class="section-tag" data-i18n="bio.tag">Votre courtière</div>
         <h2 class="section-title bio-title" id="bio-title">Jennie Lee Desbiens</h2>
-        <p class="bio-role">Courtière immobilière · FlashImmobilier · Gatineau &amp; Outaouais</p>
-        <p class="bio-text">
+        <p class="bio-role" data-i18n="bio.role">Courtière immobilière · FlashImmobilier · Gatineau &amp; Outaouais</p>
+        <p class="bio-text" data-i18n="bio.text">
           Passionnée et à l’écoute, j’accompagne vendeurs et acheteurs en Outaouais avec une analyse de marché honnête — pas d’estimation automatique, pas de pression inutile.
         </p>
-        <p class="bio-text intent-sell-only">
+        <p class="bio-text intent-sell-only" data-i18n="bio.sell">
           Mon approche : disponibilité, transparence et connaissance fine du terrain local. Que vous vendiez bientôt ou que vous vous renseigniez simplement, vous obtenez une réponse claire sous 24&nbsp;h.
         </p>
-        <p class="bio-text intent-buy-only">
+        <p class="bio-text intent-buy-only" data-i18n="bio.buy">
           Mon approche : disponibilité, transparence et connaissance fine du terrain local. Que vous achetiez votre première maison ou que vous changiez de secteur, vous obtenez un accompagnement clair sous 24&nbsp;h.
         </p>
         <ul class="bio-highlights">
-          <li>Courtier certifié OACIQ</li>
-          <li>5,0 / 5 · 120 avis Google vérifiés</li>
-          <li>Gatineau, Aylmer, Hull &amp; environs</li>
+          <li data-i18n="bio.h1">Courtier certifié OACIQ</li>
+          <li data-i18n="bio.h2">5,0 / 5 · 120 avis Google vérifiés</li>
+          <li data-i18n="bio.h3">Gatineau, Aylmer, Hull &amp; environs</li>
         </ul>
-        <a href="#form" class="bio-cta intent-sell-only">Demander mon évaluation gratuite →</a>
-        <a href="#form" class="bio-cta intent-buy-only">Parler à Jennie-Lee de mon achat →</a>
+        <a href="#form" class="bio-cta intent-sell-only" data-i18n="bio.cta.sell">Demander mon évaluation gratuite →</a>
+        <a href="#form" class="bio-cta intent-buy-only" data-i18n="bio.cta.buy">Parler à Jennie-Lee de mon achat →</a>
       </div>
     </div>
     <div class="bio-split__photo">
       <img
         src="assets/jennie-lee-hero.jpg"
-        alt="Jennie Lee Desbiens, courtière immobilière à Gatineau"
+        data-i18n-alt="bio.imgAlt"
         width="800"
         height="1066"
         loading="lazy"
@@ -339,62 +294,62 @@
   <div class="section intent-sell-only">
     <div class="how-grid">
       <div class="how-left">
-        <div class="section-tag">Comment ça fonctionne</div>
-        <h2 class="section-title">Simple, rapide,<br />sans obligation</h2>
-        <p class="lead">En 3 étapes, vous obtenez une analyse de marché honnête pour prendre la meilleure décision.</p>
+        <div class="section-tag" data-i18n="how.tag">Comment ça fonctionne</div>
+        <h2 class="section-title" data-i18n-html="how.title">Simple, rapide,<br />sans obligation</h2>
+        <p class="lead" data-i18n="how.lead.sell">En 3 étapes, vous obtenez une analyse de marché honnête pour prendre la meilleure décision.</p>
         <div class="steps">
           <div class="step">
             <div class="step-num-wrap">1</div>
             <div class="step-content">
-              <div class="step-name">Vous remplissez le formulaire</div>
-              <div class="step-desc">Adresse, type de propriété et coordonnées. Aucune visite à planifier à ce stade.</div>
+              <div class="step-name" data-i18n="how.sell.s1.title">Vous remplissez le formulaire</div>
+              <div class="step-desc" data-i18n="how.sell.s1.desc">Adresse et coordonnées. Aucune visite à planifier à ce stade.</div>
             </div>
           </div>
           <div class="step">
             <div class="step-num-wrap">2</div>
             <div class="step-content">
-              <div class="step-name">On analyse les ventes comparables</div>
-              <div class="step-desc">Transactions réelles dans votre secteur, ajustements selon l’état et le marché actuel.</div>
+              <div class="step-name" data-i18n="how.sell.s2.title">On analyse les ventes comparables</div>
+              <div class="step-desc" data-i18n="how.sell.s2.desc">Transactions réelles dans votre secteur, ajustements selon l’état et le marché actuel.</div>
             </div>
           </div>
           <div class="step">
             <div class="step-num-wrap">3</div>
             <div class="step-content">
-              <div class="step-name">Vous recevez votre rapport</div>
-              <div class="step-desc">Sous 24 h par téléphone. Fourchette de prix réaliste, sans pression de vendre.</div>
+              <div class="step-name" data-i18n="how.sell.s3.title">Vous recevez votre rapport</div>
+              <div class="step-desc" data-i18n="how.sell.s3.desc">Sous 24 h par téléphone. Fourchette de prix réaliste, sans pression de vendre.</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="how-right">
-        <div class="how-right-title">Ce que votre évaluation<br />comprend exactement</div>
+        <div class="how-right-title" data-i18n-html="how.right.sell.title">Ce que votre évaluation<br />comprend exactement</div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.sell.1">
             <strong>Analyse des comparables récents</strong> — ventes réelles des 6 derniers mois dans un rayon de 500 m à 1 km.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.sell.2">
             <strong>Tendance du marché local</strong> — demande actuelle dans votre quartier, délais de vente typiques.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.sell.3">
             <strong>Fourchette de prix recommandée</strong> — optimisée pour vendre vite et au meilleur prix.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.sell.4">
             <strong>Conseils de mise en valeur</strong> — les ajustements simples qui ont le plus d’impact sur le prix final.
           </div>
         </div>
         <div class="how-quote-footer">
-          <div>« Ce n’est pas une estimation automatique. C’est une analyse faite par un courtier qui connaît votre marché. »</div>
+          <div data-i18n="how.quote.sell">« Ce n’est pas une estimation automatique. C’est une analyse faite par un courtier qui connaît votre marché. »</div>
         </div>
       </div>
     </div>
@@ -403,62 +358,62 @@
   <div class="section intent-buy-only">
     <div class="how-grid">
       <div class="how-left">
-        <div class="section-tag">Comment ça fonctionne</div>
-        <h2 class="section-title">Simple, rapide,<br />sans obligation</h2>
-        <p class="lead">En 3 étapes, vous êtes accompagné pour trouver la bonne propriété en Outaouais.</p>
+        <div class="section-tag" data-i18n="how.tag">Comment ça fonctionne</div>
+        <h2 class="section-title" data-i18n-html="how.title">Simple, rapide,<br />sans obligation</h2>
+        <p class="lead" data-i18n="how.lead.buy">En 3 étapes, vous êtes accompagné pour trouver la bonne propriété en Outaouais.</p>
         <div class="steps">
           <div class="step">
             <div class="step-num-wrap">1</div>
             <div class="step-content">
-              <div class="step-name">Vous partagez votre projet</div>
-              <div class="step-desc">Secteur, budget, type de propriété et délai. On clarifie vos priorités dès le départ.</div>
+              <div class="step-name" data-i18n="how.buy.s1.title">Vous partagez votre projet</div>
+              <div class="step-desc" data-i18n="how.buy.s1.desc">On clarifie vos priorités dès le premier contact.</div>
             </div>
           </div>
           <div class="step">
             <div class="step-num-wrap">2</div>
             <div class="step-content">
-              <div class="step-name">On cible les bonnes propriétés</div>
-              <div class="step-desc">Analyse du marché, sélection alignée sur vos critères et organisation des visites pertinentes.</div>
+              <div class="step-name" data-i18n="how.buy.s2.title">On cible les bonnes propriétés</div>
+              <div class="step-desc" data-i18n="how.buy.s2.desc">Analyse du marché, sélection alignée sur vos critères et visites pertinentes.</div>
             </div>
           </div>
           <div class="step">
             <div class="step-num-wrap">3</div>
             <div class="step-content">
-              <div class="step-name">Vous avancez en confiance</div>
-              <div class="step-desc">Stratégie d’offre, négociation et suivi jusqu’à la transaction — sans pression inutile.</div>
+              <div class="step-name" data-i18n="how.buy.s3.title">Vous avancez en confiance</div>
+              <div class="step-desc" data-i18n="how.buy.s3.desc">Stratégie d’offre, négociation et suivi jusqu’à la transaction — sans pression inutile.</div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="how-right">
-        <div class="how-right-title">Ce que votre accompagnement<br />acheteur comprend</div>
+        <div class="how-right-title" data-i18n-html="how.right.buy.title">Ce que votre accompagnement<br />acheteur comprend</div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.buy.1">
             <strong>Connaissance des secteurs</strong> — Gatineau, Aylmer, Hull et environs : quartiers, prix et délais réels.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.buy.2">
             <strong>Propriétés alignées sur vos critères</strong> — moins de visites inutiles, plus de clarté sur chaque option.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.buy.3">
             <strong>Stratégie d’offre et négociation</strong> — pour protéger vos intérêts et avancer au bon rythme.
           </div>
         </div>
         <div class="how-feature">
           <div class="how-check">✓</div>
-          <div class="how-feature-text">
+          <div class="how-feature-text" data-i18n-html="how.f.buy.4">
             <strong>Réseau de professionnels</strong> — inspecteurs, notaires et partenaires de confiance au besoin.
           </div>
         </div>
         <div class="how-quote-footer">
-          <div>« Un accompagnement humain, pas un catalogue de maisons. On avance à votre rythme. »</div>
+          <div data-i18n="how.quote.buy">« Un accompagnement humain, pas un catalogue de maisons. On avance à votre rythme. »</div>
         </div>
       </div>
     </div>
@@ -469,9 +424,9 @@
   <div class="testimonials-bg">
     <div class="section ts-marquee-section">
       <header class="ts-intro">
-        <p class="ts-pill">Témoignages Google</p>
-        <h2 class="section-title ts-intro-title">Ce que disent les clients</h2>
-        <p class="ts-intro-lead">
+        <p class="ts-pill" data-i18n="ts.pill">Témoignages Google</p>
+        <h2 class="section-title ts-intro-title" data-i18n="ts.title">Ce que disent les clients</h2>
+        <p class="ts-intro-lead" data-i18n-html="ts.lead">
           Note moyenne <strong>5,0 sur 5</strong>, basée sur <strong>120 avis Google vérifiés</strong>.
         </p>
       </header>
@@ -490,7 +445,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Andrée-Michèle Chrétien</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -503,7 +458,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Jérémie Bélair</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -516,7 +471,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Madeleine Kanane</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <!-- doublon pour boucle infinie -->
@@ -530,7 +485,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Andrée-Michèle Chrétien</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -543,7 +498,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Jérémie Bélair</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -556,7 +511,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Madeleine Kanane</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
           </div>
@@ -574,7 +529,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Frank Guenard</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -587,7 +542,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Firdaous Saada</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -599,7 +554,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Sarah Bouchkhi</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -611,7 +566,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Frank Guenard</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -624,7 +579,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Firdaous Saada</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -636,7 +591,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Sarah Bouchkhi</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
           </div>
@@ -655,7 +610,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Veronique G</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -667,7 +622,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Inspection T-Spec</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card">
@@ -679,7 +634,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">David L</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -692,7 +647,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Veronique G</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -704,7 +659,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">Inspection T-Spec</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
             <article class="ts-card" aria-hidden="true">
@@ -716,7 +671,7 @@
               </p>
               <div class="ts-card-person">
                 <div class="ts-person-name">David L</div>
-                <div class="ts-person-role">Avis Google vérifié</div>
+                <div class="ts-person-role" data-i18n="ts.verified">Avis Google vérifié</div>
               </div>
             </article>
           </div>
@@ -729,83 +684,83 @@
           <div class="rating-stars">
             <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
           </div>
-          <div class="rating-caption">Basé sur 120 avis Google vérifiés</div>
+          <div class="rating-caption" data-i18n="ts.rating">Basé sur 120 avis Google vérifiés</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="section intent-sell-only">
-    <div class="section-tag">Pourquoi une évaluation professionnelle</div>
-    <h2 class="section-title">Les estimateurs automatiques<br />peuvent vous coûter cher</h2>
+    <div class="section-tag" data-i18n="why.tag.sell">Pourquoi une évaluation professionnelle</div>
+    <h2 class="section-title" data-i18n-html="why.title.sell">Les estimateurs automatiques<br />peuvent vous coûter cher</h2>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">📈</div>
-        <div class="why-title">Prix optimal</div>
-        <div class="why-text">Un prix trop bas vous coûte des milliers. Trop haut, la propriété stagne et se dévalorise.</div>
+        <div class="why-title" data-i18n="why.sell.1.t">Prix optimal</div>
+        <div class="why-text" data-i18n="why.sell.1.d">Un prix trop bas vous coûte des milliers. Trop haut, la propriété stagne et se dévalorise.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">📅</div>
-        <div class="why-title">Bon timing</div>
-        <div class="why-text">Savoir si c’est le bon moment pour vendre dans votre quartier précis, pas le marché général.</div>
+        <div class="why-title" data-i18n="why.sell.2.t">Bon timing</div>
+        <div class="why-text" data-i18n="why.sell.2.d">Savoir si c’est le bon moment pour vendre dans votre quartier précis, pas le marché général.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">📊</div>
-        <div class="why-title">Données réelles</div>
-        <div class="why-text">Basé sur les transactions réelles, pas des algorithmes avec des données périmées.</div>
+        <div class="why-title" data-i18n="why.sell.3.t">Données réelles</div>
+        <div class="why-text" data-i18n="why.sell.3.d">Basé sur les transactions réelles, pas des algorithmes avec des données périmées.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">🛡</div>
-        <div class="why-title">Zéro obligation</div>
-        <div class="why-text">L’évaluation est gratuite. Vous décidez de la suite — vendre, attendre, ou vous informer.</div>
+        <div class="why-title" data-i18n="why.sell.4.t">Zéro obligation</div>
+        <div class="why-text" data-i18n="why.sell.4.d">L’évaluation est gratuite. Vous décidez de la suite — vendre, attendre, ou vous informer.</div>
       </div>
     </div>
   </div>
 
   <div class="section intent-buy-only">
-    <div class="section-tag">Pourquoi être accompagné</div>
-    <h2 class="section-title">Acheter sans courtier<br />peut vous coûter cher</h2>
+    <div class="section-tag" data-i18n="why.tag.buy">Pourquoi être accompagné</div>
+    <h2 class="section-title" data-i18n-html="why.title.buy">Acheter sans courtier<br />peut vous coûter cher</h2>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">🔍</div>
-        <div class="why-title">Bonnes opportunités</div>
-        <div class="why-text">Accès à des propriétés alignées sur vos critères, pas seulement ce qui est visible en ligne.</div>
+        <div class="why-title" data-i18n="why.buy.1.t">Bonnes opportunités</div>
+        <div class="why-text" data-i18n="why.buy.1.d">Accès à des propriétés alignées sur vos critères, pas seulement ce qui est visible en ligne.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">🤝</div>
-        <div class="why-title">Négociation</div>
-        <div class="why-text">Une stratégie d’offre solide pour protéger vos intérêts et éviter les erreurs coûteuses.</div>
+        <div class="why-title" data-i18n="why.buy.2.t">Négociation</div>
+        <div class="why-text" data-i18n="why.buy.2.d">Une stratégie d’offre solide pour protéger vos intérêts et éviter les erreurs coûteuses.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">📍</div>
-        <div class="why-title">Connaissance locale</div>
-        <div class="why-text">Quartiers, prix au pied carré et délais réels — l’essentiel pour acheter au bon moment.</div>
+        <div class="why-title" data-i18n="why.buy.3.t">Connaissance locale</div>
+        <div class="why-text" data-i18n="why.buy.3.d">Quartiers, prix au pied carré et délais réels — l’essentiel pour acheter au bon moment.</div>
       </div>
       <div class="why-card">
         <div class="why-icon">🛡</div>
-        <div class="why-title">Zéro obligation</div>
-        <div class="why-text">Premier contact gratuit. Vous avancez seulement si l’accompagnement vous convient.</div>
+        <div class="why-title" data-i18n="why.buy.4.t">Zéro obligation</div>
+        <div class="why-text" data-i18n="why.buy.4.d">Premier contact gratuit. Vous avancez seulement si l’accompagnement vous convient.</div>
       </div>
     </div>
   </div>
 
   <div class="cta-section intent-sell-only">
     <div class="cta-inner">
-      <div class="cta-label">Prêt à savoir</div>
-      <h2 class="cta-title">Quelle est la valeur<br /><em>réelle</em> de votre propriété ?</h2>
-      <p class="cta-sub">Gratuit, rapide, sans engagement. Vous obtenez une réponse concrète sous 24 heures.</p>
-      <a href="#form" class="btn-cta-big">Obtenir mon évaluation gratuite →</a>
-      <p class="cta-note">✓ Gratuit &nbsp;&nbsp; ✓ Sans engagement &nbsp;&nbsp; ✓ Réponse sous 24 h</p>
+      <div class="cta-label" data-i18n="cta.label.sell">Prêt à savoir</div>
+      <h2 class="cta-title" data-i18n-html="cta.title.sell">Quelle est la valeur<br /><em>réelle</em> de votre propriété ?</h2>
+      <p class="cta-sub" data-i18n="cta.sub.sell">Gratuit, rapide, sans engagement. Vous obtenez une réponse concrète sous 24 heures.</p>
+      <a href="#form" class="btn-cta-big" data-i18n="cta.btn.sell">Obtenir mon évaluation gratuite →</a>
+      <p class="cta-note" data-i18n-html="cta.note">✓ Gratuit &nbsp;&nbsp; ✓ Sans engagement &nbsp;&nbsp; ✓ Réponse sous 24 h</p>
     </div>
   </div>
 
   <div class="cta-section intent-buy-only">
     <div class="cta-inner">
-      <div class="cta-label">Prêt à avancer</div>
-      <h2 class="cta-title">Trouvons ensemble<br /><em>votre prochaine</em> maison</h2>
-      <p class="cta-sub">Gratuit, rapide, sans engagement. Parlez de votre projet d’achat avec Jennie-Lee.</p>
-      <a href="#form" class="btn-cta-big">Démarrer ma recherche →</a>
-      <p class="cta-note">✓ Gratuit &nbsp;&nbsp; ✓ Sans engagement &nbsp;&nbsp; ✓ Réponse sous 24 h</p>
+      <div class="cta-label" data-i18n="cta.label.buy">Prêt à avancer</div>
+      <h2 class="cta-title" data-i18n-html="cta.title.buy">Trouvons ensemble<br /><em>votre prochaine</em> maison</h2>
+      <p class="cta-sub" data-i18n="cta.sub.buy">Gratuit, rapide, sans engagement. Parlez de votre projet d’achat avec Jennie-Lee.</p>
+      <a href="#form" class="btn-cta-big" data-i18n="cta.btn.buy">Démarrer ma recherche →</a>
+      <p class="cta-note" data-i18n-html="cta.note">✓ Gratuit &nbsp;&nbsp; ✓ Sans engagement &nbsp;&nbsp; ✓ Réponse sous 24 h</p>
     </div>
   </div>
 
@@ -814,46 +769,46 @@
       <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
       </svg>
-      Courtier certifié OACIQ
+      <span data-i18n="trust.oaciq">Courtier certifié OACIQ</span>
     </div>
     <div class="trust-item">
       <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
-      Données confidentielles
+      <span data-i18n="trust.privacy">Données confidentielles</span>
     </div>
     <div class="trust-item">
       <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
-      Réponse sous 24 heures
+      <span data-i18n="trust.response">Réponse sous 24 heures</span>
     </div>
     <div class="trust-item">
       <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
         <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
-      5,0 / 5 · 120 avis Google
+      <span data-i18n="trust.google">5,0 / 5 · 120 avis Google</span>
     </div>
   </div>
 
   <div id="thanks-modal" class="lead-modal" role="dialog" aria-modal="true" aria-labelledby="thanks-title" hidden>
     <div class="lead-modal__box">
-      <h2 id="thanks-title" class="lead-modal__title">Merci <span id="thanks-name"></span></h2>
-      <p class="lead-modal__sub">Votre demande a bien été envoyée. Jennie-Lee vous contacte sous 24 h.</p>
-      <button type="button" class="btn-primary lead-modal__close" data-close-modal>Fermer</button>
+      <h2 id="thanks-title" class="lead-modal__title"><span data-i18n="modal.thanks">Merci</span> <span id="thanks-name"></span></h2>
+      <p class="lead-modal__sub" data-i18n="modal.sub">Votre demande a bien été envoyée. Jennie-Lee vous contacte sous 24 h.</p>
+      <button type="button" class="btn-primary lead-modal__close" data-close-modal data-i18n="modal.close">Fermer</button>
     </div>
   </div>
 
   <footer>
-    <p>© 2026 FlashImmobilier · <a href="#">Politique de confidentialité</a> · <a href="#">Conditions d’utilisation</a></p>
-    <p style="margin-top: 6px">Courtier immobilier agréé · OACIQ · Gatineau, Outaouais</p>
-    <p style="margin-top: 10px">Tous droits réservés. Site web fait par <a href="https://www.wenov.ca" target="_blank" rel="noopener noreferrer">Wenov</a></p>
+    <p data-i18n-html="footer.line1">© 2026 FlashImmobilier · <a href="#">Politique de confidentialité</a> · <a href="#">Conditions d’utilisation</a></p>
+    <p style="margin-top: 6px" data-i18n="footer.line2">Courtier immobilier agréé · OACIQ · Gatineau, Outaouais</p>
+    <p style="margin-top: 10px" data-i18n-html="footer.line3">Tous droits réservés. Site web fait par <a href="https://www.wenov.ca" target="_blank" rel="noopener noreferrer">Wenov</a></p>
   </footer>
 
-  <script src="lead-config.js"></script>
+  <script src="site-i18n.js?v=1"></script>
   <script src="lead-submit.js?v=2"></script>
-  <script src="evaluation-montreal.js?v=3"></script>
+  <script src="evaluation-montreal.js?v=5"></script>
 </body>
 </html>

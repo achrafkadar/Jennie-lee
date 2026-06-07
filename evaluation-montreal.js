@@ -26,7 +26,26 @@
         }
         field.disabled = !active;
       });
+      item.el.querySelectorAll("fieldset").forEach(function (fieldset) {
+        fieldset.disabled = !active;
+      });
     });
+  }
+
+  function msg(key) {
+    if (window.SiteI18n && window.SiteI18n.t) return window.SiteI18n.t(key);
+    var fallback = {
+      "err.required": "Requis",
+      "err.phone": "Téléphone invalide",
+      "err.email": "Courriel invalide",
+      "err.lang": "Choisissez FR ou EN",
+      "err.webhook":
+        "Webhook Make non configuré (lead-config.js). Appelez le 873-353-5386.",
+      "err.send":
+        "Envoi impossible. Réessayez ou appelez le 873-353-5386.",
+      "err.sending": "Envoi en cours…",
+    };
+    return fallback[key] || key;
   }
 
   function setIntent(intent) {
@@ -41,15 +60,25 @@
       buyBtn.setAttribute("aria-pressed", next === "buy" ? "true" : "false");
     }
 
-    if (navCta) {
+    if (navCta && window.SiteI18n) {
+      window.SiteI18n.onIntentChanged();
+    } else if (navCta) {
       navCta.textContent =
         next === "buy" ? "Parler à Jennie-Lee" : "Évaluation gratuite";
     }
 
-    document.title =
-      next === "buy"
-        ? "Acheter en Outaouais · FlashImmobilier · Jennie Lee Desbiens"
-        : "Évaluation gratuite · Gatineau & Outaouais · FlashImmobilier";
+    if (window.SiteI18n) {
+      window.SiteI18n.apply();
+    } else {
+      document.title =
+        next === "buy"
+          ? "Acheter en Outaouais · FlashImmobilier · Jennie Lee Desbiens"
+          : "Évaluation gratuite · Gatineau & Outaouais · FlashImmobilier";
+    }
+
+    document.dispatchEvent(
+      new CustomEvent("site-intent-changed", { detail: next })
+    );
 
     if (location.hash !== "#" + next) {
       history.replaceState(null, "", "#" + next);
@@ -113,27 +142,24 @@
     var err = {};
     var intent = payload.intent;
 
-    if (!payload.prenom || !String(payload.prenom).trim()) err.prenom = "Requis";
+    if (!payload.prenom || !String(payload.prenom).trim()) err.prenom = msg("err.required");
+    if (!payload.nom || !String(payload.nom).trim()) err.nom = msg("err.required");
     if (!window.LeadSubmit.validatePhone(payload.telephone)) {
-      err.telephone = "Téléphone invalide";
+      err.telephone = msg("err.phone");
     }
-    if (payload.email && !window.LeadSubmit.validateEmail(payload.email)) {
-      err.email = "Courriel invalide";
+    if (!payload.email || !String(payload.email).trim()) {
+      err.email = msg("err.required");
+    } else if (!window.LeadSubmit.validateEmail(payload.email)) {
+      err.email = msg("err.email");
+    }
+    if (payload.langue !== "FR" && payload.langue !== "EN") {
+      err.langue = msg("err.lang");
     }
 
     if (intent === "sell") {
       if (!payload.adresse || String(payload.adresse).trim().length < 5) {
-        err.adresse = "Requis";
+        err.adresse = msg("err.required");
       }
-      if (!payload.typePropriete) err.typePropriete = "Requis";
-      if (!payload.quandVendre) err.quandVendre = "Requis";
-    }
-
-    if (intent === "buy") {
-      if (!payload.secteur) err.secteur = "Requis";
-      if (!payload.typePropriete) err.typePropriete = "Requis";
-      if (!payload.budget) err.budget = "Requis";
-      if (!payload.quandAcheter) err.quandAcheter = "Requis";
     }
 
     return err;
@@ -163,10 +189,7 @@
       }
 
       if (!window.LeadSubmit.webhookUrl()) {
-        showBanner(
-          form,
-          "Webhook Make non configuré (lead-config.js). Appelez le 873-353-5386."
-        );
+        showBanner(form, msg("err.webhook"));
         return;
       }
 
@@ -175,7 +198,7 @@
       var originalHtml = btnLabel ? btnLabel.innerHTML : "";
 
       if (submitBtn) submitBtn.disabled = true;
-      if (btnLabel) btnLabel.textContent = "Envoi en cours…";
+      if (btnLabel) btnLabel.textContent = msg("err.sending");
 
       window.LeadSubmit.submit(payload)
         .then(function () {
@@ -186,10 +209,7 @@
           if (ex.fields) {
             showErrors(form, ex.fields);
           } else {
-            showBanner(
-              form,
-              "Envoi impossible. Réessayez ou appelez le 873-353-5386."
-            );
+            showBanner(form, msg("err.send"));
           }
         })
         .finally(function () {
