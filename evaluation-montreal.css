@@ -93,6 +93,7 @@ nav {
   width: auto;
   max-height: 38px;
   max-width: min(160px, 38vw);
+  object-fit: contain;
 }
 
 .nav__logo--desbiens {

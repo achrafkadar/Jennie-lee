@@ -1,16 +1,17 @@
-# Logos à remplacer
+# Logos PNG
 
 Téléchargez les fichiers depuis le Drive client :
 
 https://drive.google.com/drive/folders/1a0lqszLZH-Ben4Dn-wucTE_lUcSBUvC1
 
-Remplacez ensuite dans ce dossier :
+Placez-les dans **`assets/`** avec ces noms **exactement** :
 
-| Fichier sur le site | Logo |
-|---------------------|------|
-| `assets/logo-flash.svg` (ou `.png`) | Logo FlashImmobilier |
-| `assets/logo-equipe-desbiens.svg` (ou `.png`) | Logo Équipe Desbiens |
+| Fichier | Usage |
+|---------|--------|
+| `logo-flash.png` | Logo FlashImmobilier (barre du haut) |
+| `logo-equipe-desbiens.png` | Logo Jennie-Lee / Équipe Desbiens (barre du haut) |
+| `favicon.png` | Petite icône dans l’onglet Chrome (32×32 ou 48×48 px) |
 
-Si vous utilisez PNG, mettez à jour les `src` dans `index.html` (nav en haut).
+**Conseil** : fond transparent. Pour `favicon.png`, utilisez la petite version du logo Flash ou Équipe Desbiens.
 
-Les placeholders actuels sont temporaires en attendant les vrais fichiers.
+Après ajout : `git add assets/*.png` puis push.
