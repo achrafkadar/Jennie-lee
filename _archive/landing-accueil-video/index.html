@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jennie Lee Desbiens — Courtière immobilière | Gatineau</title>
+  <meta
+    name="description"
+    content="Courtière immobilière à Gatineau. Estimation gratuite de votre propriété, accompagnement humain. Jennie Lee Desbiens, Flash Immobilier."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css?v=12" />
+</head>
+<body>
+  <header class="header" id="site-header">
+    <div class="wrap header__inner">
+      <a href="#hero" class="header__name font-display">Jennie Lee Desbiens</a>
+      <a class="header__phone" href="tel:+18733535386">873-353-5386</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Vidéo : placez votre fichier MP4 dans assets/hero.mp4 (même dossier que ce HTML). Image de secours : assets/hero-bg.jpg -->
+    <section class="hero-video" id="hero">
+      <div class="hero-video__media" aria-hidden="true">
+        <video
+          class="hero-video__el"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="assets/hero-bg.jpg"
+        >
+          <source src="assets/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-video__shade" aria-hidden="true"></div>
+      <div class="hero-video__content">
+        <p class="hero-video__brand">Flash Immobilier</p>
+        <h1 class="hero-video__title font-display">Immobilier résidentiel à Gatineau &amp; en Outaouais</h1>
+        <p class="hero-video__line">Estimation gratuite · Accompagnement acheteur — une équipe à votre écoute.</p>
+        <div class="hero-video__ctas">
+          <button type="button" class="hero-video__btn hero-video__btn--buy" data-hero-intent="buy">Je veux acheter</button>
+          <button type="button" class="hero-video__btn hero-video__btn--sell" data-hero-intent="sell">Je veux vendre</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="estimation-form">
+      <div class="wrap form-wrap">
+        <header class="form-head">
+          <h2 class="form-head__title font-display">Écrivez-moi</h2>
+          <p class="form-head__sub">Quelques informations suffisent. Je vous réponds sous 24 h.</p>
+        </header>
+        <form id="lead-form" class="form" novalidate>
+          <input type="hidden" name="intent" id="intent" value="sell" />
+          <input type="text" name="website" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <input type="hidden" name="utm_source" value="" />
+          <input type="hidden" name="utm_medium" value="" />
+          <input type="hidden" name="utm_campaign" value="" />
+          <input type="hidden" name="utm_content" value="" />
+          <input type="hidden" name="utm_term" value="" />
+          <input type="hidden" name="referrer" value="" />
+          <input type="hidden" name="page_url" value="" />
+          <input type="hidden" name="gclid" value="" />
+          <input type="hidden" name="fbclid" value="" />
+
+          <div class="form-row">
+            <div class="field">
+              <label for="prenom">Prénom *</label>
+              <input id="prenom" name="prenom" type="text" autocomplete="given-name" required />
+              <p class="field__err" data-error="prenom"></p>
+            </div>
+            <div class="field">
+              <label for="nom">Nom *</label>
+              <input id="nom" name="nom" type="text" autocomplete="family-name" required />
+              <p class="field__err" data-error="nom"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="telephone">Téléphone *</label>
+            <input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" required />
+            <p class="field__err" data-error="telephone"></p>
+          </div>
+          <div class="field">
+            <label for="email">Courriel *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+            <p class="field__err" data-error="email"></p>
+          </div>
+          <div class="field">
+            <label for="adresse">Adresse de la propriété *</label>
+            <input id="adresse" name="adresse" type="text" autocomplete="street-address" required />
+            <p class="field__err" data-error="adresse"></p>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="typePropriete">Type *</label>
+              <select id="typePropriete" name="typePropriete" required>
+                <option value="" disabled selected>Type de propriété</option>
+                <option value="maison_unifamiliale">Maison</option>
+                <option value="condo">Condo</option>
+                <option value="plex">Plex</option>
+                <option value="terrain">Terrain</option>
+                <option value="autre">Autre</option>
+              </select>
+              <p class="field__err" data-error="typePropriete"></p>
+            </div>
+            <div class="field">
+              <label for="quandVendre">Échéance *</label>
+              <select id="quandVendre" name="quandVendre" required>
+                <option value="" disabled selected>Quand pensez-vous vendre ?</option>
+                <option value="0_3_mois">3 prochains mois</option>
+                <option value="3_6_mois">3 à 6 mois</option>
+                <option value="6_12_mois">6 à 12 mois</option>
+                <option value="plus_12_mois">Plus d’un an</option>
+                <option value="curieux">Je me renseigne</option>
+              </select>
+              <p class="field__err" data-error="quandVendre"></p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--dark btn--wide">Envoyer</button>
+          <p class="form-note">Vos informations restent confidentielles.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="wrap proof">
+        <p class="proof__item"><strong>100+</strong> transactions</p>
+        <p class="proof__item"><strong>OACIQ</strong> membre en règle</p>
+        <p class="proof__item"><strong>24 h</strong> pour répondre</p>
+        <p class="proof__item"><strong>7/7</strong> joignabilité</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="h2 font-display">En trois temps</h2>
+        <ol class="steps">
+          <li><span class="steps__n">1</span> Vous remplissez le formulaire.</li>
+          <li><span class="steps__n">2</span> J’analyse les ventes comparables dans votre secteur.</li>
+          <li><span class="steps__n">3</span> Vous recevez une estimation claire par courriel.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="wrap about">
+        <figure class="about__photo">
+          <img src="assets/jennie-lee-hero.jpg" alt="Jennie Lee Desbiens" width="400" height="533" loading="lazy" />
+        </figure>
+        <div class="about__text">
+          <h2 class="h2 font-display">Jennie Lee Desbiens</h2>
+          <p class="muted">
+            J’accompagne vendeurs et acheteurs à Gatineau, Aylmer, Hull et environs avec une connaissance fine du marché — sans pression, avec transparence.
+          </p>
+          <button type="button" class="btn btn--outline" data-scroll-form>Demander une estimation</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="h2 font-display">Témoignages</h2>
+        <div class="quotes">
+          <blockquote class="quote">
+            <p>« Claire, efficace et humaine. Nous avons vendu en confiance. »</p>
+            <cite>— Gilles, Gatineau</cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p>« Elle nous a aidés à comprendre le marché sans nous pousser. »</p>
+            <cite>— Émilie, Aylmer</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft">
+      <div class="wrap faq">
+        <h2 class="h2 font-display">Questions fréquentes</h2>
+        <details class="faq__item">
+          <summary>L’estimation est-elle gratuite ?</summary>
+          <p>Oui, sans obligation de votre part.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Vais-je être relancé ?</summary>
+          <p>Non. Je vous contacte pour votre dossier, pas pour vous harceler.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Mes données sont-elles protégées ?</summary>
+          <p>Oui, elles restent strictement confidentielles.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta__inner">
+        <h2 class="cta__title font-display">Parlons de votre projet</h2>
+        <button type="button" class="btn btn--gold" data-scroll-form>Estimation gratuite</button>
+        <p class="cta__tel"><a href="tel:+18733535386">873-353-5386</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <p class="footer__name font-display">Jennie Lee Desbiens</p>
+        <p class="footer__line muted">Courtière immobilière · Flash Immobilier</p>
+        <p class="footer__line muted">35 Allée de Hambourg, suite 215, Gatineau (QC)</p>
+        <p class="footer__line"><a href="mailto:jennieleedesbiens@gmail.com">jennieleedesbiens@gmail.com</a></p>
+      </div>
+      <div class="footer__logos" aria-label="Associations">
+        <img src="assets/oaciq-logo.svg" alt="OACIQ" height="32" width="88" />
+        <img src="assets/centris-logo.svg" alt="Centris" height="32" width="88" />
+        <img src="assets/mls-logo.svg" alt="MLS" height="32" width="88" />
+      </div>
+      <p class="footer__legal">
+        <a href="#pol">Confidentialité</a> · <a href="#ml">Mentions légales</a>
+      </p>
+      <p id="pol" class="sr-only">Politique de confidentialité — à compléter.</p>
+      <p id="ml" class="sr-only">Mentions légales — à compléter.</p>
+      <p class="footer__copy muted">© 2026</p>
+    </div>
+  </footer>
+
+  <div id="thanks-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="thanks-title">
+    <div class="modal__box">
+      <h2 id="thanks-title" class="modal__title font-display">Merci <span id="thanks-name"></span></h2>
+      <p class="muted">Je reviens vers vous sous 24 h. Pour toute urgence : <a href="tel:+18733535386">873-353-5386</a></p>
+      <button type="button" class="btn btn--dark btn--wide" data-close-modal>Fermer</button>
+    </div>
+  </div>
+
+  <script src="lead-config.js" defer></script>
+  <script src="lead-config.secret.js" defer></script>
+  <script src="lead-submit.js?v=2" defer></script>
+  <script src="main.js?v=13" defer></script>
+</body>
+</html>
