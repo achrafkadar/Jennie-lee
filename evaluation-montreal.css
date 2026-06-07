@@ -119,6 +119,11 @@ body[data-intent="buy"] .intent-sell-only {
   display: none !important;
 }
 
+#sell-lead-form[hidden],
+#buy-lead-form[hidden] {
+  display: none !important;
+}
+
 .intent-toggle {
   display: flex;
   gap: 12px;

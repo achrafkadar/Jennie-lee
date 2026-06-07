@@ -8,9 +8,31 @@
   var modal = document.getElementById("thanks-modal");
   var thanksName = document.getElementById("thanks-name");
 
+  function syncForms(activeIntent) {
+    var forms = [
+      { el: sellForm, intent: "sell" },
+      { el: buyForm, intent: "buy" },
+    ];
+
+    forms.forEach(function (item) {
+      if (!item.el) return;
+      var active = item.intent === activeIntent;
+      item.el.hidden = !active;
+      item.el.setAttribute("aria-hidden", active ? "false" : "true");
+      item.el.querySelectorAll("input, select, textarea, button").forEach(function (field) {
+        if (field.name === "website") {
+          field.disabled = active;
+          return;
+        }
+        field.disabled = !active;
+      });
+    });
+  }
+
   function setIntent(intent) {
     var next = intent === "buy" ? "buy" : "sell";
     body.setAttribute("data-intent", next);
+    syncForms(next);
 
     if (sellBtn && buyBtn) {
       sellBtn.classList.toggle("is-active", next === "sell");
@@ -133,6 +155,10 @@
       var err = validateClient(form, payload);
       if (Object.keys(err).length) {
         showErrors(form, err);
+        var firstError = form.querySelector(".form-field-error:not(:empty)");
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
         return;
       }
 
