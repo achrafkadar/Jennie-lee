@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+cd "$(dirname "$0")/.."
+PORT="${1:-8765}"
+echo ""
+echo "  Site local : http://127.0.0.1:${PORT}/"
+echo "  Merci      : http://127.0.0.1:${PORT}/merci.html?prenom=Marie"
+echo ""
+echo "  Ctrl+C pour arrêter"
+echo ""
+python3 -m http.server "$PORT"

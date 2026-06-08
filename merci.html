@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merci · FlashImmobilier</title>
+  <meta name="description" content="Votre demande a bien été envoyée à Jennie Lee Desbiens." />
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="evaluation-montreal.css?v=17" />
+</head>
+<body class="thanks-page">
+  <nav>
+    <div class="nav__brand">
+      <a href="index.html" class="nav__logo-link" aria-label="FlashImmobilier">
+        <img class="nav__logo nav__logo--flash" src="assets/logo-flash.png" alt="FlashImmobilier" width="160" height="38" />
+      </a>
+      <span class="nav__logo-sep" aria-hidden="true"></span>
+      <a href="index.html" class="nav__logo-link" aria-label="Équipe Desbiens">
+        <img class="nav__logo nav__logo--desbiens" src="assets/logo-equipe-desbiens.png" alt="Équipe Desbiens" width="140" height="38" />
+      </a>
+    </div>
+    <div class="nav__actions">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang">
+        <button type="button" class="lang-switch__btn is-active" data-set-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-switch__btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="thanks-page__main">
+    <div class="thanks-page__card">
+      <div class="thanks-page__icon" aria-hidden="true">✓</div>
+      <h1 class="thanks-page__title">
+        <span data-i18n="thanks.page.greeting">Merci</span><span id="thanks-prenom-wrap">, <span id="thanks-prenom"></span></span>!
+      </h1>
+      <p class="thanks-page__sub intent-sell-only" data-i18n="thanks.page.sub.sell">
+        Votre demande d’évaluation a bien été envoyée. Jennie-Lee vous contacte sous 24 h.
+      </p>
+      <p class="thanks-page__sub intent-buy-only" data-i18n="thanks.page.sub.buy">
+        Votre demande a bien été envoyée. Jennie-Lee vous contacte sous 24 h pour votre projet d’achat.
+      </p>
+      <a href="index.html" class="btn-primary thanks-page__back" data-i18n="thanks.page.back">Retour à l’accueil</a>
+    </div>
+  </main>
+
+  <footer>
+    <p data-i18n-html="footer.line3">Tous droits réservés. Site web fait par <a href="https://www.wenov.ca" target="_blank" rel="noopener noreferrer">Wenov</a></p>
+  </footer>
+
+  <script src="site-i18n.js?v=2"></script>
+  <script src="merci.js?v=1"></script>
+</body>
+</html>

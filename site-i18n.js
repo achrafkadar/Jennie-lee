@@ -60,10 +60,18 @@
       "err.send":
         "Envoi impossible. Réessayez ou appelez le 873-353-5386.",
       "err.sending": "Envoi en cours…",
+      "err.formSummary": "Veuillez remplir tous les champs obligatoires.",
       "modal.thanks": "Merci",
       "modal.sub":
         "Votre demande a bien été envoyée. Jennie-Lee vous contacte sous 24 h.",
       "modal.close": "Fermer",
+      "thanks.page.greeting": "Merci",
+      "thanks.page.sub.sell":
+        "Votre demande d’évaluation a bien été envoyée. Jennie-Lee vous contacte sous 24 h.",
+      "thanks.page.sub.buy":
+        "Votre demande a bien été envoyée. Jennie-Lee vous contacte sous 24 h pour votre projet d’achat.",
+      "thanks.page.urgent": "Urgence :",
+      "thanks.page.back": "Retour à l’accueil",
       "bio.tag": "Votre courtière",
       "bio.role":
         "Courtière immobilière · FlashImmobilier · Gatineau & Outaouais",
@@ -242,10 +250,18 @@
         "Make webhook not configured (lead-config.js). Call 873-353-5386.",
       "err.send": "Unable to send. Try again or call 873-353-5386.",
       "err.sending": "Sending…",
+      "err.formSummary": "Please fill in all required fields.",
       "modal.thanks": "Thank you",
       "modal.sub":
         "Your request has been sent. Jennie-Lee will contact you within 24 h.",
       "modal.close": "Close",
+      "thanks.page.greeting": "Thank you",
+      "thanks.page.sub.sell":
+        "Your evaluation request has been sent. Jennie-Lee will contact you within 24 h.",
+      "thanks.page.sub.buy":
+        "Your request has been sent. Jennie-Lee will contact you within 24 h about your buying project.",
+      "thanks.page.urgent": "Urgent:",
+      "thanks.page.back": "Back to home",
       "bio.tag": "Your broker",
       "bio.role":
         "Real estate broker · FlashImmobilier · Gatineau & Outaouais",

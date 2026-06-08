@@ -5,8 +5,6 @@
   var buyBtn = document.querySelector('[data-intent-select="buy"]');
   var sellForm = document.getElementById("sell-lead-form");
   var buyForm = document.getElementById("buy-lead-form");
-  var modal = document.getElementById("thanks-modal");
-  var thanksName = document.getElementById("thanks-name");
 
   function syncForms(activeIntent) {
     var forms = [
@@ -39,6 +37,7 @@
       "err.phone": "Téléphone invalide",
       "err.email": "Courriel invalide",
       "err.lang": "Choisissez FR ou EN",
+      "err.formSummary": "Veuillez remplir tous les champs obligatoires.",
       "err.webhook":
         "Webhook Make non configuré (lead-config.js). Appelez le 873-353-5386.",
       "err.send":
@@ -104,10 +103,15 @@
     setIntent(body.getAttribute("data-intent") || "sell");
   }
 
-  function clearErrors(form) {
+  function clearFieldState(form) {
     form.querySelectorAll("[data-error]").forEach(function (el) {
       el.textContent = "";
     });
+    form.querySelectorAll(".is-invalid").forEach(function (el) {
+      el.classList.remove("is-invalid");
+      el.removeAttribute("aria-invalid");
+    });
+    form.classList.remove("form-card--invalid");
     var banner = form.querySelector(".form-banner-error");
     if (banner) {
       banner.hidden = true;
@@ -120,6 +124,25 @@
       var el = form.querySelector('[data-error="' + key + '"]');
       if (el) el.textContent = err[key];
     });
+  }
+
+  function markInvalidFields(form, err) {
+    Object.keys(err).forEach(function (key) {
+      if (key === "langue") {
+        var fs = form.querySelector(".form-lang");
+        if (fs) {
+          fs.classList.add("is-invalid");
+          fs.setAttribute("aria-invalid", "true");
+        }
+        return;
+      }
+      var field = form.querySelector('[name="' + key + '"]');
+      if (field) {
+        field.classList.add("is-invalid");
+        field.setAttribute("aria-invalid", "true");
+      }
+    });
+    form.classList.add("form-card--invalid");
   }
 
   function showBanner(form, message) {
@@ -144,7 +167,9 @@
 
     if (!payload.prenom || !String(payload.prenom).trim()) err.prenom = msg("err.required");
     if (!payload.nom || !String(payload.nom).trim()) err.nom = msg("err.required");
-    if (!window.LeadSubmit.validatePhone(payload.telephone)) {
+    if (!payload.telephone || !String(payload.telephone).trim()) {
+      err.telephone = msg("err.required");
+    } else if (!window.LeadSubmit.validatePhone(payload.telephone)) {
       err.telephone = msg("err.phone");
     }
     if (!payload.email || !String(payload.email).trim()) {
@@ -165,25 +190,62 @@
     return err;
   }
 
-  function openThanks(prenom) {
-    if (thanksName) thanksName.textContent = prenom ? " " + prenom.trim() : "";
-    if (modal) modal.hidden = false;
+  function goToThanks(prenom, intent) {
+    var params = new URLSearchParams();
+    params.set("prenom", String(prenom || "").trim());
+    params.set("intent", intent === "buy" ? "buy" : "sell");
+    if (window.SiteI18n && window.SiteI18n.getLang) {
+      params.set("lang", window.SiteI18n.getLang());
+    }
+    window.location.href = "merci.html?" + params.toString();
   }
 
   function bindLeadForm(form) {
     if (!form || !window.LeadSubmit) return;
 
+    form.addEventListener("input", function (e) {
+      var t = e.target;
+      if (!t || !t.classList || !t.classList.contains("is-invalid")) return;
+      t.classList.remove("is-invalid");
+      t.removeAttribute("aria-invalid");
+      var key = t.name;
+      if (key) {
+        var errEl = form.querySelector('[data-error="' + key + '"]');
+        if (errEl) errEl.textContent = "";
+      }
+    });
+
+    form.addEventListener("change", function (e) {
+      if (e.target && e.target.name === "langue") {
+        var fs = form.querySelector(".form-lang");
+        if (fs) {
+          fs.classList.remove("is-invalid");
+          fs.removeAttribute("aria-invalid");
+        }
+        var errLang = form.querySelector('[data-error="langue"]');
+        if (errLang) errLang.textContent = "";
+      }
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      clearErrors(form);
+      clearFieldState(form);
 
       var payload = formToPayload(form);
       var err = validateClient(form, payload);
       if (Object.keys(err).length) {
         showErrors(form, err);
-        var firstError = form.querySelector(".form-field-error:not(:empty)");
-        if (firstError) {
-          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        markInvalidFields(form, err);
+        showBanner(form, msg("err.formSummary"));
+        form.scrollIntoView({ behavior: "smooth", block: "center" });
+        var firstInvalid = form.querySelector(".is-invalid");
+        if (firstInvalid && typeof firstInvalid.focus === "function") {
+          firstInvalid.focus();
+        } else {
+          var firstError = form.querySelector(".form-field-error:not(:empty)");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
         }
         return;
       }
@@ -202,12 +264,12 @@
 
       window.LeadSubmit.submit(payload)
         .then(function () {
-          form.reset();
-          openThanks(payload.prenom);
+          goToThanks(payload.prenom, payload.intent);
         })
         .catch(function (ex) {
           if (ex.fields) {
             showErrors(form, ex.fields);
+            markInvalidFields(form, ex.fields);
           } else {
             showBanner(form, msg("err.send"));
           }
@@ -221,16 +283,4 @@
 
   bindLeadForm(sellForm);
   bindLeadForm(buyForm);
-
-  document.querySelectorAll("[data-close-modal]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      if (modal) modal.hidden = true;
-    });
-  });
-
-  if (modal) {
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) modal.hidden = true;
-    });
-  }
 })();
